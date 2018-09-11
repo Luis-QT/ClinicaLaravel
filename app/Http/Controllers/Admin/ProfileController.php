@@ -71,7 +71,7 @@ class ProfileController extends Controller
       return $txt;
    }
 
-   public function store(StoreProfile $request)
+   public function store(Store $request)
    {
       Profile::create([
          'name' => $request->name,
@@ -113,23 +113,23 @@ class ProfileController extends Controller
    }
   
    public function destroy($id)
-   {
+   {  
+
       $profile = Profile::find($id);
       $txt="1";
       //Verifica que no sea el perfil "Admin"
       if($profile->id==1){
         $txt="No se puedo eliminar el perfil\n- El perfil Admin es fijo";
-      }else if($profile->employees->isNotEmpty()){
+      }else if($profile->users->isNotEmpty()){
         //Verifica que no tenga relaciones con empleados
-        $txtEmployee="";
-        foreach ($profile->employees as $employee) {
-            $txtEmployee.=" - ".$employee->user->name."\n";
+        $txtUsers="";
+        foreach ($profile->users as $user) {
+            $txtUsers.=" - ".$user->name."\n";
         }
-        $txt="No se pudo eliminar el perfil\nTiene relacion con empleados:\n".$txtEmployee;
-        $txt.="\n\nNota:Para eliminar este perfil debe cambiar el perfil de los empleados";
+        $txt="No se pudo eliminar el perfil\nTiene relacion con usuarios:\n".$txtUsers;
+        $txt.="\n\nNota:Para eliminar este perfil debe cambiar el perfil de los usuarios";
       }else{
         $profile->delete();
-        return "1";
       }
       return $txt;
    }
