@@ -19,12 +19,12 @@ class CreateMeetingsTable extends Migration
             $table->string('hour');
             $table->string('observation');
             $table->integer('state');
-            $table->integer('patient_id');
-            $table->integer('doctor_id');
-            $table->integer('office_id');
-            $table->foreign('patient_id')->references('patients')->on('id');
-            $table->foreign('doctor_id')->references('doctors')->on('id');
-            $table->foreign('office_id')->references('offices')->on('id');
+            $table->integer('patient_id')->unsigned();
+            $table->integer('doctor_id')->unsigned();
+            $table->integer('office_id')->unsigned();
+            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('doctor_id')->references('id')->on('doctors');
+            $table->foreign('office_id')->references('id')->on('offices');
             $table->timestamps();
         });
     }
