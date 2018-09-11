@@ -23,4 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::namespace('Admin')->group(function () {
     Route::resource('/admin/specialties', 'SpecialtyController');
+    Route::resource('/admin/profiles', 'ProfileController');
 });

@@ -6,19 +6,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\User as User;
 use App\Profile as Profile;
+use App\Http\Requests\Profiles\Store;
+use App\Http\Requests\Profiles\Destroy;
 
 
 class ProfileController extends Controller
 {
-   public function __construct(){
-     $this->middleware('route');
-     $this->middleware('admin');
-   }   
    public function index()
    {
        $permisos=Auth::User()->profile->permissions;
        $permisos=Profile::decodificar($permisos);
-       $permisos=Profile::permisosDeTipo($permisos,"perfiles");
+       $permisos=Profile::permisosDeTipo($permisos,"Perfiles");
 
        $show = $new = $edit = $delete = "";
        $ver=$permisos[0];
@@ -73,11 +71,11 @@ class ProfileController extends Controller
       return $txt;
    }
 
-   public function store(Request $request)
+   public function store(StoreProfile $request)
    {
       Profile::create([
          'name' => $request->name,
-         'permissions' =>'perfiles,0,0,0,0;empleados,0,0,0,0;editoriales,0,0,0,0;autores,0,0,0,0;stands,0,0,0,0;libros,0,0,0,0;tesis,0,0,0,0;revistas,0,0,0,0;compendios,0,0,0,0;encuestas,0,0,0,0;noticias,0,0,0,0;usuarios,0,0,0,0;tipos de castigo,0,0,0,0;feriados,0,0,0,0;tipos de usuario,0,0;pedidos,0,0,0;prestamos,0,0,0;sanciones,0,0,0,0'
+         'permissions' =>'Perfiles,0,0,0,0;Usuarios,0,0,0,0;'
       ]);
       return redirect('admin/profiles');
    }
@@ -131,7 +129,11 @@ class ProfileController extends Controller
         $txt.="\n\nNota:Para eliminar este perfil debe cambiar el perfil de los empleados";
       }else{
         $profile->delete();
+        return "1";
       }
       return $txt;
    }
 }
+
+
+      

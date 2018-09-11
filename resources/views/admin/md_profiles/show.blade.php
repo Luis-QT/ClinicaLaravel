@@ -34,40 +34,40 @@
 	</div>
 </div>
 
-@section('script')
 <script type="text/javascript">
-      $(document).ready(function() {
-        @if($editar)
-        $(".editar").on('click',function(event) {
-          $id = $(this).data('id')
-          $("#div-edit").html('<div class="box box-success box-solid"><div class="box-header with-border"><h3 class="box-title">Editar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
-          $("#div-edit").load('{{ url("/admin/profiles/") }}/' + $id + '/edit');
-        });
-        @endif
+  $(document).ready(function() {
+    @if($editar)
+    $(".editar").on('click',function(event) {
+      $id = $(this).data('id');
+      alert("entra");
+      console.log($id);
+      $("#div-edit").html('<div class="box box-success box-solid"><div class="box-header with-border"><h3 class="box-title">Editar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
+      $("#div-edit").load('{{ url("/admin/profiles/") }}/' + $id + '/edit');
+    });
+    @endif
 
-        @if($eliminar)
-        $(".eliminar").on('click',function(event) {
-          $name = $(this).data('name')
-          $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el perfil ' + $name +'?</p>');
-          $('#confirmaDelete').data('id',$(this).data('id'))
-        });
+    @if($eliminar)
+    $(".eliminar").on('click',function(event) {
+      $name = $(this).data('name')
+      $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el perfil ' + $name +'?</p>');
+      $('#confirmaDelete').data('id',$(this).data('id'))
+    });
 
-        $("#confirmaDelete").on('click',function(event){
-          $id = $('#confirmaDelete').data('id')
-          $.ajax({
-            url: '{{ url("/admin/profiles") }}/'+$id,
-            type: 'DELETE',
-            data: {'_token': '{{csrf_token()}}'},
-            success: function(data) {
-               if(data!="1"){
-               	 alert(data);
-               }else{
-               	 location.reload();
-               }
-            }
-          })
-        })
-        @endif
-      });
-    </script>
-@endsection
+    $("#confirmaDelete").on('click',function(event){
+      $id = $('#confirmaDelete').data('id')
+      $.ajax({
+        url: '{{ url("/admin/profiles") }}/'+$id,
+        type: 'DELETE',
+        data: {'_token': '{{csrf_token()}}'},
+        success: function(data) {
+           if(data!="1"){
+           	 alert(data);
+           }else{
+           	 location.reload();
+           }
+        }
+      })
+    })
+    @endif
+  });
+</script>
