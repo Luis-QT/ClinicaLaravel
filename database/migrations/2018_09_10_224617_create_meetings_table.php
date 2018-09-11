@@ -15,6 +15,16 @@ class CreateMeetingsTable extends Migration
     {
         Schema::create('meetings', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('date');
+            $table->string('hour');
+            $table->string('observation');
+            $table->integer('state');
+            $table->integer('patient_id');
+            $table->integer('doctor_id');
+            $table->integer('office_id');
+            $table->foreign('patient_id')->references('patients')->on('id');
+            $table->foreign('doctor_id')->references('doctors')->on('id');
+            $table->foreign('office_id')->references('offices')->on('id');
             $table->timestamps();
         });
     }

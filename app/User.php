@@ -16,7 +16,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 
+        'lastName',
+        'email', 
+        'password',
+        'state',
+        'profile_id',
     ];
 
     /**
@@ -27,4 +32,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function profile(){
+        return $this->belongsTo('App\Profile','profile_id');
+    }
 }

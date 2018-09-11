@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOficesTable extends Migration
+class CreateProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateOficesTable extends Migration
      */
     public function up()
     {
-        Schema::create('ofices', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('permissions');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *
@@ -26,6 +28,6 @@ class CreateOficesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ofices');
+        Schema::dropIfExists('profiles');
     }
 }
