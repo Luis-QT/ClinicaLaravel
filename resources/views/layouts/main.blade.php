@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>APP CLINICA</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
@@ -15,6 +15,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
@@ -164,11 +166,52 @@ desired effect
 <!-- jQuery 3 -->
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- DataTables -->
+<script src="{{ asset('bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+<script>
+  $(function () {
+    $(".dataTable").DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "stateSave": false, //Guarda el estado actual de la pagina
+        "language" : {
+            "sProcessing" : "Procesando...",
+            "sLenghtMenu" : "Mostrar _MENU_ registros",
+            "sZeroRecords" : "No se encontraron resultados",
+            "sEmptyTable" : "Ningún dato disponible en esta tabla",
+            "sInfo" : "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty" : "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered" : "(filtrado de un total de _MAX_ registros",
+            "sInfoPosFix" : "",
+            "sSearch" : "Buscar: ",
+            "sUrl" : "" ,
+            "sInfoThousands": ",",
+            "sLoadingRecords" : "Cargando...",
+            "oPaginate": {
+                "sFirst" : "Primero",
+                "sLast" : "Último",
+                "sNext" : "Siguiente" ,
+                "sPrevious" : "Anterior"
+            },
+            "oAria" : {
+                "sSortAscending" : ": Actibar para ordenar la columna de manera ascendente",
+                "sSordtDescending" : ": Activar para ordenar la columna de manera descendente"
+            },
+            "lengthMenu" : "Mostrar _MENU_ registros por página",
+            "zeroRecords": "No se encontraron registros",
+            "info" : "Página _PAGE_ de _PAGES_",
+            "infoEmpty" : "No hay registros"
+        },
+    });
+  })
+</script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
 </body>
 </html>

@@ -36,4 +36,12 @@ class User extends Authenticatable
     public function profile(){
         return $this->belongsTo('App\Profile','profile_id');
     }
+
+    public function getState(){
+        if($this->state==1){
+            return "Habilitado";
+        }else{
+            return "Deshabilitado";
+        }
+    }
 }

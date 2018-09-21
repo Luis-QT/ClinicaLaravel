@@ -6,12 +6,12 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        <img src="{{ asset('dist/img/user3.jpg') }}" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Alexander Pierce</p>
+        <p>{{ Auth::User()->name }}</p>
         <!-- Status -->
-        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <a href="#"><i class="fa fa-circle text-success"></i> En Linea</a>
       </div>
     </div>
 
@@ -20,7 +20,7 @@
       <div class="input-group">
         <input type="text" name="q" class="form-control" placeholder="Search...">
         <span class="input-group-btn">
-            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+            <button type="submit" name="Buscar" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
             </button>
           </span>
       </div>
@@ -29,12 +29,10 @@
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
-      <li class="header">HEADER</li>
+      <li class="header">MENÚ DE NAVEGACIÓN</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="active"><a href="{{ url('/admin/specialties') }}"><i class="fa fa-link"></i> <span>Especialidades</span></a></li>
-      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
       <li class="treeview">
-        <a href="#"><i class="fa fa-link"></i> <span>Empleados</span>
+        <a href="#"><i class="fa fa-link"></i> <span>Administración</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -44,6 +42,8 @@
           <li><a href="{{ url('/admin/profiles') }}">Perfiles</a></li>
         </ul>
       </li>
+      <li class="active"><a href="{{ url('/admin/specialties') }}"><i class="fa fa-link"></i> <span>Especialidades</span></a></li>
+      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>
