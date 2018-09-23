@@ -23,6 +23,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{{ asset('dist/css/skins/skin-blue.min.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
 
 

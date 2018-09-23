@@ -8,40 +8,54 @@
 		</div>
 	</div>
 	<div class="box-body">
-		<table class="table table-bordered table-hover dataTable">
-			<thead>
-				<th>#</th>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Email</th>
-				<th>Perfil</th>
-				<th>Estado</th>
-				<th>Editar</th>
-				<th>Eliminar</th>
-			</thead>
-			@foreach($users as $i => $user)
-			<tbody>
-				<td>{{ $i+1 }}</td>
-				<td>{{ $user->name }}</td>
-				<td>{{ $user->lastName }}</td>
-				<td>{{ $user->email }}</td>
-				<td>{{ $user->profile->name }}</td>
-				<td>{{ $user->getState() }}</td>
-				<td><button type="button" data-id="{{$user->id}}"
-						class="btn btn-success editar" @if(!$editar) disabled @endif>
-						<i class="fa fa-pencil"></i>
-					</button></td>
-				<td><button type="button" data-id="{{$user->id}}"
-						data-name="{{$user->name}}" class="btn btn-danger eliminar"
-						data-toggle="modal" data-target="#delted"
-						@if(!$eliminar) disabled @endif>
-						<i class="fa fa-trash"></i>
-					</button></td>
-			</tbody>
-			@endforeach
-		</table>
+		<div class="clearfix div-top-table">
+            <div class="pull-left">
+              <a type="button" target="_blank" href="{{ url('/admin/theses/viewPDF') }}" class="btn btn-default"><i class="fa fa-eye"></i> Vista PDF</a>
+              <a type="button" href="{{ url('/admin/theses/exportPDF') }}" class="btn btn-default"><i class="fa fa-file-pdf"></i> PDF</a>
+              <a type="button" href="{{ url('/admin/theses/exportExcel') }}" class="btn btn-default"><i class="fas fa-file-excel"></i> EXCEL</a>
+            </div>
+            <div class="pull-right">
+              <button data-toggle="modal" data-target=".modalAgregar" class="btn btn-primary"><i class="fa fa-plus"></i> Agregar</button>
+            </div>
+        </div>
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover  dataTable">
+				<thead>
+					<th>#</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Email</th>
+					<th>Perfil</th>
+					<th>Estado</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</thead>
+				@foreach($users as $i => $user)
+				<tbody>
+					<td>{{ $i+1 }}</td>
+					<td>{{ $user->name }}</td>
+					<td>{{ $user->lastName }}</td>
+					<td>{{ $user->email }}</td>
+					<td>{{ $user->profile->name }}</td>
+					<td>{{ $user->getState() }}</td>
+					<td><button type="button" data-id="{{$user->id}}"
+							class="btn btn-success editar" @if(!$editar) disabled @endif>
+							<i class="fa fa-pencil"></i>
+						</button></td>
+					<td><button type="button" data-id="{{$user->id}}"
+							data-name="{{$user->name}}" class="btn btn-danger eliminar"
+							data-toggle="modal" data-target="#delted"
+							@if(!$eliminar) disabled @endif>
+							<i class="fa fa-trash"></i>
+						</button></td>
+				</tbody>
+				@endforeach
+			</table>
+		</div>
 	</div>
 </div>
+
+@include('admin.md_users.modalAdd')
 
 <script type="text/javascript">
   $(document).ready(function() {
