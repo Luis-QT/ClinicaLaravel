@@ -48,37 +48,37 @@
 <script type="text/javascript">
   $(document).ready(function() {
     @if($editar)
-    $(".editar").on('click',function(event) {
+    $(document).on('click','.editar',function(event) {
       $id = $(this).data('id')
       $("#div-edit").html('<div class="box box-success box-solid"><div class="box-header with-border"><h3 class="box-title">Editar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
-      $("#div-edit").load('{{ url("/admin/specialty/") }}/' + $id + '/edit');
+      $("#div-edit").load('{{ url("/admin/specialties/") }}/' + $id + '/edit');
     });
     @endif
 
     @if($eliminar)
-    $(".eliminar").on('click',function(event) {
+    $(document).on('click',".eliminar",function(event) {
       $name = $(this).data('name')
-      $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el editorial ' + $name +'?</p>');
+      $('.modal-body').html('<p>¿Esta seguro que quiere eliminar la especialidad ' + $name +'?</p>');
       $('#confirmaDelete').data('id',$(this).data('id'))
     });
+
     $("#confirmaDelete").on('click',function(event){
       $id = $('#confirmaDelete').data('id');
       $.ajax({
-       url: '{{url("/admin/autor/")}}/'+$id+'/destroy',
-       type:'post',
+       url: '{{url("/admin/specialties")}}/'+$id,
+       type:'DELETE',
        data:{_token:'{{csrf_token()}}',
        },
        success: function(data)
        { 
       	 if(data=="1"){
-			$("#div-show").html('<div class="box box-warning box-solid"><div class="box-header with-border"><h3 class="box-title">Editar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
-			$("#div-show").load('{{ url("/admin/autor/actualizarLista")}}');
+      			location.reload();
       	 }else{
       	    alert(data);
-      	    console.log(data);
       	}
       }
 	 });
+
     })
     @endif
   });

@@ -37,14 +37,14 @@
 <script type="text/javascript">
   $(document).ready(function() {
     @if($editar)
-    $(".editar").on('click',function(event) {
+    $(document).on('click',".editar",function(event) {
       $id = $(this).data('id');
       $("#div-edit").html('<div class="box box-success box-solid"><div class="box-header with-border"><h3 class="box-title">Editar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
       $("#div-edit").load('{{ url("/admin/profiles/") }}/' + $id + '/edit');
     });
     @endif
 
-    $(".eliminar").on('click',function(event) {
+    $(document).on('click',".eliminar",function(event) {
       $name = $(this).data('name')
       $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el perfil ' + $name +'?</p>');
       $('#confirmaDelete').data('id',$(this).data('id'))
