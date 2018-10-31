@@ -14,8 +14,8 @@ class Office extends Model
 	   ];
 
 	   public function state(){
-    	return $this->belongsTo('App\Keyword','keyword_state');
-    }
+    	  return $this->belongsTo('App\Keyword','keyword_state');
+       }
 
 	   public function meetings(){
 	   	  return $this->hasMany('App\Meeting','office_id');
