@@ -18,7 +18,8 @@ class CreateMeetingsTable extends Migration
             $table->string('date');
             $table->string('hour');
             $table->string('observation');
-            $table->integer('state');
+            $table->integer('state')->unsigned();
+            $table->foreign('state')->references('id')->on('keywords');
             $table->integer('patient_id')->unsigned();
             $table->integer('doctor_id')->unsigned();
             $table->integer('office_id')->unsigned();

@@ -22,7 +22,7 @@ class CreatePatientsTable extends Migration
             $table->string('address');
             $table->string('email');
             $table->string('password');
-            $table->integer('genero');
+            $table->integer('gender');
             $table->timestamps();
         });
     }

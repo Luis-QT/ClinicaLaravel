@@ -22,8 +22,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12">
-                    {!! $edit !!}
+                <div class="col-md-12" id="div-edit">
                 </div>
             </div>
         </div>

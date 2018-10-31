@@ -34,7 +34,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label>Estado</label>
-                      <select class="select2">
+                      <select class="form-control select2" style="width: 100%;">
                         <option>Habilitado</option>
                         <option>Deshabilitado</option>
                       </select>

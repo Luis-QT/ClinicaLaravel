@@ -11,6 +11,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+
+  <link rel="stylesheet" href="{{ URL::asset('css/bootstrap-combined.min.css')}}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
@@ -18,14 +20,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   <!-- Theme style -->
+  <link rel="stylesheet" href="{{ URL::asset('plugins/select2/select2.min.css') }}">
+  <link rel="stylesheet" href="{{URL::asset('css/bootstrap-multiselect.css')}}">
+
   <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect. -->
   <link rel="stylesheet" href="{{ asset('dist/css/skins/skin-blue.min.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  
+  
+
+
+
   <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{URL::asset('js/bootstrap-multiselect.js')}}"></script>
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -173,8 +185,14 @@ desired effect
 <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
+<script src="{{URL::asset('plugins/select2/select2.full.js')}}"></script>
+
+
+<script> $(document).ready(function(){$('.select2').select2();}) </script>
+
 <script>
   $(function () {
+
     $(".dataTable").DataTable({
         "paging": true,
         "lengthChange": true,

@@ -22,7 +22,7 @@
 						<i class="fa fa-pencil"></i>
 					</button></td>
 				<td><button type="button" data-id="{{$perfil->id}}"
-						data-name="{{$perfil->name}}" class="btn btn-danger eliminar"
+						data-name="{{$perfil->name}}" class="btn btn-danger btn-sm eliminar"
 						data-toggle="modal" data-target="#delted"
 						@if(!$eliminar) disabled @endif>
 						<i class="fa fa-trash"></i>
