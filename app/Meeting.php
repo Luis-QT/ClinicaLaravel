@@ -12,11 +12,15 @@ class Meeting extends Model
    	   'date',
    	   'hour',
    	   'observation',
-   	   'state',
+   	   'keyword_state', 
    	   'patient_id',
    	   'doctor_id',
    	   'office_id',
    	];
+
+      public function state(){
+          return $this->belongsTo('App\Keyword','keyword_state');
+       }
 
    	public function doctor(){
    	    return $this->belongsTo('App\Doctor','doctor_id');

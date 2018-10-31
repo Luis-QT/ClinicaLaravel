@@ -17,7 +17,7 @@ class Users extends Seeder
             'lastName'=>'Quispe Taquire',
          	'email' => 'admin@admin.com',
          	'password' => bcrypt('admin'),
-            'state'=>1,
+            'keyword_state'=>1,
             'profile_id'=>1,
          ]);
     }

@@ -10,8 +10,12 @@ class Specialty extends Model
 
     protected $fillable = [
         'name', 
-        'state', 
+        'keyword_state', 
     ];
+
+    public function state(){
+    	return $this->belongsTo('App\Keyword','keyword_state');
+    }
 
     public function doctors(){
     	return $this->hasMany('App\Doctor','specialty_id');

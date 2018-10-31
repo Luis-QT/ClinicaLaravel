@@ -13,16 +13,16 @@ class Specialties extends Seeder
     {
         Specialty::create([
            'name' => 'Medico General',
-           'state' => 1,
+           'keyword_state' => 1,
         ]);
 
         Specialty::create([
            'name' => 'Oftalmologo',
-           'state' => 1,
+           'keyword_state' => 1,
         ]);
 		Specialty::create([
            'name' => 'Cardiologo',
-           'state' => 1,
+           'keyword_state' => 1,
         ]);
     }
 }

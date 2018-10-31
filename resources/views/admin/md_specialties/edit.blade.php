@@ -10,44 +10,19 @@
 		{{ csrf_field() }} {{ method_field('PUT') }}
 		<div class="box-body">
 			<div class="form-group">
-				<label for="name">Nombre </label> <input type="text" id="editNombre" 
-					class="form-control" name="name" value="{{ $author->name }}"
+				<label for="name">Nombre </label> <input type="text" 
+					class="form-control" name="name" value="{{ $specialty->name }}"
 					required>
 			</div>
-			<?php
-		      $id_1 = $id_2 = $id_3 = $id_4 =$id_5 = $id_6 = false;
-		      foreach ($author->categories as $category) {
-		         switch ($category->name) {
-		            case 'libro':$id_1 = true;break;
-		            case 'revista':$id_2 = true;break;
-		            case 'tesis/tesina':$id_3 = true;break;
-		            case 'compendio':$id_4 = true;break;
-		            case 'colaborador':$id_5 = true;break;
-		            case 'asesor':$id_6 = true;break;
-		            default:
-		         }
-		      }
-		    ?>
 		    <div class="form-group">
-		    	<label>Categoria</label>
-		    	<select class="form-control select2" multiple="multiple" data-placeholder="Seleccione la categoria"	name="category[]" style="width: 100%;" id="editCategoria" required>
-		    		@if($id_1)
-		    		<option selected>libro</option> @else
-					<option>libro</option>@endif @if($id_2)
-					<option selected>revista</option> @else
-					<option>revista</option>@endif @if($id_3)
-					<option selected>tesis/tesina</option> @else
-					<option>tesis/tesina</option>@endif @if($id_4)
-					<option selected>compendio</option> @else
-					<option>compendio</option>@endif @if($id_5)
-					<option selected>colaborador</option> @else
-					<option>colaborador</option>@endif @if($id_6)
-					<option selected>asesor</option> @else
-					<option>asesor</option>@endif
+		    	<label>Estado</label>
+		    	<select class="form-control select2" style="width: 100%;" id="editCategoria" required>
+		    		<option @if($specialty->keyword_state == 1) selected @endif>Habilitado</option>
+					<option @if($specialty->keyword_state == 2) selected @endif>Deshabilitado</option>
 		    	</select>
 		    </div>
 		    <div class="box-boton" style="padding-top: 0px;">
-				<button type="button" data-id="{{$author->id}}" id="btnEditar" class="btn btn-success"><span><i class="fa fa-edit"></i></span>Editar</button>
+				<button type="button" data-id="{{$specialty->id}}" id="btnEditar" class="btn btn-success"><span><i class="fa fa-edit"></i></span>Editar</button>
 			</div>
 		</div>
 </div>

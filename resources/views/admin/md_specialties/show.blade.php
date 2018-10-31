@@ -25,7 +25,7 @@
         @foreach($specialties as $specialty)
         <tr>
           <td>{{$specialty->name}}</td>
-          <td>{{$specialty->state}}</td>
+          <td>{{$specialty->state->name}}</td>
           <td class="text-center"><button type="button"
               data-id="{{$specialty->id}}" class="btn btn-success editar"
               @if(!$editar) disabled @endif>

@@ -20,7 +20,7 @@ class User extends Authenticatable
         'lastName',
         'email', 
         'password',
-        'state',
+        'keyword_state', 
         'profile_id',
     ];
 
@@ -32,6 +32,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function state(){
+        return $this->belongsTo('App\Keyword','keyword_state');
+    }
 
     public function profile(){
         return $this->belongsTo('App\Profile','profile_id');

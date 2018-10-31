@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('lastName');
             $table->string('email');
             $table->string('password');
-            $table->integer('state')->unsigned();
-            $table->foreign('state')->references('id')->on('keywords');
+            $table->integer('keyword_state')->unsigned();
+            $table->foreign('keyword_state')->references('id')->on('keywords');
             $table->integer('profile_id')->unsigned();
             $table->foreign('profile_id')->references('id')->on('profiles');
             $table->rememberToken();

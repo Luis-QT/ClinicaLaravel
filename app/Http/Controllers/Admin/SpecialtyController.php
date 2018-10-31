@@ -61,7 +61,7 @@ class SpecialtyController extends Controller
            return view('admin.md_specialties.index', [
               'show' => $show,
               'new' => $new,
-              'edit' => "",
+              'edit' => $edit,
               'delete' => "",
            ]);
         }
