@@ -17,7 +17,7 @@ class Patient extends Model
         'birthdate',
         'phone',
         'address',
-        'genero',
+        'gender',
     ];
 
     public function meetings(){
