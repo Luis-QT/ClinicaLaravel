@@ -53,16 +53,16 @@ class SpecialtyController extends Controller
            }
            if ($eliminar) {
              if ($specialties->isNotEmpty()) {
-               // $delete = view('admin.md_specialties.delete', [
-               //    'specialty' => $specialties->first()
-               // ]);
+               $delete = view('admin.md_specialties.delete', [
+                  'specialty' => $specialties->first()
+               ]);
             }
            }
            return view('admin.md_specialties.index', [
               'show' => $show,
               'new' => $new,
               'edit' => $edit,
-              'delete' => "",
+              'delete' => $delete,
            ]);
         }
 
@@ -85,11 +85,12 @@ class SpecialtyController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {    
         Specialty::create([
             'name' => $request->name,
-            'state' => 0,
+            'keyword_state' => $request->state,
         ]);
+        return redirect('admin/specialties');
     }
 
     /**
@@ -112,7 +113,9 @@ class SpecialtyController extends Controller
     public function edit($id)
     {
         $specialty = Specialty::find($id);
-        
+        return view('admin.md_specialties.edit', [
+           'specialty' => $specialty,
+        ]);
     }
 
     /**
@@ -126,8 +129,9 @@ class SpecialtyController extends Controller
     {
         $specialty = Specialty::find($id);
         $specialty->name = $request->name;
-        $specialty->state = $request->state;
+        $specialty->keyword_state = $request->state;
         $specialty->save();
+        return redirect('admin/specialties');
     }
 
     /**
@@ -138,6 +142,20 @@ class SpecialtyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $specialty = Specialty::find($id);
+        $txt="1";
+
+        if($specialty->doctors->isNotEmpty()){
+          //Verifica que no tenga relaciones con empleados
+          $txtDoctors="";
+          foreach ($specialty->doctors as $doctor) {
+              $txtDoctors.=" - ".$doctor->name."\n";
+          }
+          $txt="No se pudo eliminar la espcialidad\nTiene relacion con doctores:\n".$txtDoctors;
+          $txt.="\n\nNota:Para eliminar debe cambiar la especialidad de los doctores";
+        }else{
+          $specialty->delete();
+        }
+        return $txt;
     }
 }
