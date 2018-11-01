@@ -4,20 +4,21 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\User as User;
+use App\Doctor;
+use App\Specialty;
 use App\Profile as Profile;
 use App\Http\Requests\Profiles\Store;
 use App\Http\Requests\Profiles\Destroy;
 
 
-class UserController extends Controller
+class DoctorController extends Controller
 {
    public function index()
    {	
-   	   $users = User::all();
+   	   $doctors = Doctor::all();
        $permisos=Auth::User()->profile->permissions;
        $permisos=Profile::decodificar($permisos);
-       $permisos=Profile::permisosDeTipo($permisos,"Usuarios");
+       $permisos=Profile::permisosDeTipo($permisos,"Médicos");
 
        $show = $new = $edit = $delete = "";
        $ver=$permisos[0];
@@ -25,19 +26,19 @@ class UserController extends Controller
        $editar=$permisos[2];
        $eliminar=$permisos[3];
 
-       $perfiles=Profile::all();
+       $specialties=Specialty::all();
 
        if ($ver) {
-         $show = view('admin.md_users.show', [
-            'profiles' => $perfiles,
-            'users' => $users,
+         $show = view('admin.md_doctors.show', [
+            'specialties' => $specialties,
+            'doctors' => $doctors,
             'crear' => $crear,
             'editar' => $editar,
             'eliminar' => $eliminar
          ]);
        }
 
-       return view('admin.md_users.index', [
+       return view('admin.md_doctors.index', [
           'show' => $show,
           'edit' => $edit,
           'delete' => $delete,
@@ -49,6 +50,7 @@ class UserController extends Controller
       //
    }
 
+   //Aun no usado
    public function verificarCrear(Request $request){
       $perfiles = Profile::all();
       $txt="1";
@@ -61,15 +63,15 @@ class UserController extends Controller
 
    public function store(Store $request)
    {
-      User::create([
+      Doctor::create([
         'name' => $request->name,
         'lastName' => $request->lastName,
         'email' => $request->email, 
-        'password' => $request->password,
-        'keyword_state' => $request->state, 
-        'profile_id' => $request->profile,
+        'phone' => $request->phone,
+        'address' => $request->address,
+        'specialty_id' => $request->specialty,
       ]);
-      return redirect('admin/users');
+      return redirect('admin/doctors');
    }
 
    /**
@@ -85,35 +87,37 @@ class UserController extends Controller
 
    public function edit($id)
    {
-      $user = User::find($id);
-      $profiles=Profile::all();
-      return view('admin.md_users.modalEdit', [
-         'user' => $user,
-         'profiles' => $profiles
+      $doctor = Doctor::find($id);
+      $specialties=Specialty::all();
+      return view('admin.md_doctors.modalEdit', [
+         'doctor' => $doctor,
+         'specialties' => $specialties
       ]);
    }
 
    public function update(Request $request, $id)
    {  
-      $user = User::find($id);
-      $user->name = $request->name;
-      $user->lastName = $request->lastName;
-      $user->email = $request->email;
-      $user->password = $request->password;
-      $user->keyword_state = $request->state;
-      $user->profile_id = $request->profile;
+      $doctor = Doctor::find($id);
+      $doctor->name = $request->name;
+      $doctor->lastName = $request->lastName;
+      $doctor->email = $request->email;
+      $doctor->phone = $request->phone;
+      $doctor->address = $request->address;
+      $doctor->specialty_id = $request->specialty;
 
-      $user->save();
+      $doctor->save();
 
-      return redirect('admin/users');
+      return redirect('admin/doctors');
    }
   
    public function destroy($id)
    {  
-      $user = User::find($id);
+      $doctor = Doctor::find($id);
       $txt="1";
+
+      //Falta validacion por cita
       
-      $user->delete();
+      $doctor->delete();
 
       return $txt;
    }

@@ -26,6 +26,7 @@ Route::group(['middleware'=>'auth'], function(){
       Route::resource('/admin/offices', 'OfficeController');
       Route::resource('/admin/profiles', 'ProfileController');
       Route::resource('/admin/users', 'UserController');
+      Route::resource('/admin/doctors', 'DoctorController');
   });
 });
 
