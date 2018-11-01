@@ -43,6 +43,7 @@
         </ul>
       </li>
       <li class="active"><a href="{{ url('/admin/specialties') }}"><i class="fa fa-link"></i> <span>Especialidades</span></a></li>
+      <li ><a href="{{ url('/patients') }}"><i class="fa fa-link"></i> <span>Pacientes</span></a></li>
       <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->

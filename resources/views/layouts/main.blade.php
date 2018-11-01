@@ -50,6 +50,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <script src="{{ asset('bower_components/jquery-ui/ui/datepicker.js') }}"></script>
+
+  <link rel="stylesheet" href="{{ asset('bower_components/jquery-ui/themes/base/datepicker.css') }}">
+
+  <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css">
+
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <!--
 BODY TAG OPTIONS:
