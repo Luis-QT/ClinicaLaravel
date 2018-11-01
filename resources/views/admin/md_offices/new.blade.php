@@ -1,3 +1,5 @@
+
+
 <div class="box box-primary"> 
 	<div class="box-header with-border">
 		<h3 class="box-title">Nuevo</h3>
@@ -9,7 +11,7 @@
 	</div>
 	
 		<div class="box-body">
-      <form method="POST" id="formularioCrear" action="{{ route('specialties.store') }}">
+      <form method="POST" id="formularioCrear" action="{{ route('offices.store') }}">
       {{ csrf_field() }}
   			<div class="form-group">
   				<label>Nombre </label> <input type="text"
@@ -26,6 +28,13 @@
   			<div class="box-boton" style="padding-top: 0px;">
   				<button type="submit" id="btnCrear" class="btn btn-primary"><span><i class="fa fa-user"></i></span>Crear</button>
   			</div>
-      </form>
-		</div>
+	   </form>
+    </div>
 </div>
+
+<script>
+ $(document).ready(function(){
+   
+ });
+</script>
+

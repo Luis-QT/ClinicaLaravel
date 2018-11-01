@@ -31,21 +31,22 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MENÚ DE NAVEGACIÓN</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="treeview">
-        <a href="#"><i class="fa fa-link"></i> <span>Administración</span>
+      <li class="treeview @if(URL::full() == url('/admin/users') || URL::full() == url('/admin/profiles')) active @endif" >
+        <a href="#"><i class="fa fa-sitemap"></i> <span>Administración</span>
           <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="{{ url('/admin/users') }}">Usuarios</a></li>
-          <li><a href="{{ url('/admin/profiles') }}">Perfiles</a></li>
+          <li><a href="{{ url('/admin/users') }}"><i class="fa fa-male"></i><span>Usuarios</span></a></li>
+          <li><a href="{{ url('/admin/profiles') }}"><i class="fa fa-unlock "></i><span>Perfiles</span></a></li>
         </ul>
       </li>
-      <li class="active"><a href="{{ url('/admin/specialties') }}"><i class="fa fa-link"></i> <span>Especialidades</span></a></li>
-      <li ><a href="{{ url('/patients') }}"><i class="fa fa-link"></i> <span>Pacientes</span></a></li>
-      <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
-    </ul>
+      <li class="@if(URL::full() == url('/admin/specialties')) active @endif" ><a href="{{ url('/admin/specialties') }}"><i class="fa fa-mortar-board "></i> <span>Especialidades</span></a></li>
+      <li class="@if(URL::full() == url('/admin/offices')) active @endif" ><a href="{{ url('/admin/offices') }}"><i class="fa fa-hotel "></i> <span>Consultorios</span></a></li>
+      <li><a href="{{ url('/patients') }}"><i class="fa fa-wheelchair"></i> <span>Pacientes</span></a></li>
+      <li><a href="#"><i class="fa fa-stethoscope"></i> <span>Another Link</span></a></li>
+      <li><a href="#"><i class="fa fa-user-md"></i> <span>Another Link</span></a></li>
     <!-- /.sidebar-menu -->
   </section>
   <!-- /.sidebar -->

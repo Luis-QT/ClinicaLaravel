@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware'=>'auth'], function(){
   Route::namespace('Admin')->group(function () {
       Route::resource('/admin/specialties', 'SpecialtyController');
+      Route::resource('/admin/offices', 'OfficeController');
       Route::resource('/admin/profiles', 'ProfileController');
       Route::resource('/admin/users', 'UserController');
   });

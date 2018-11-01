@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Specialty;
-class Specialties extends Seeder
+use App\Office;
+
+class Offices extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,17 +12,17 @@ class Specialties extends Seeder
      */
     public function run()
     {
-        Specialty::create([
-           'name' => 'Medico General',
+        Office::create([
+           'name' => 'Consultorio A-1',
            'keyword_state' => 1,
         ]);
 
-        Specialty::create([
-           'name' => 'Oftalmologo',
+        Office::create([
+           'name' => 'Consultorio A-2',
            'keyword_state' => 1,
         ]);
-		    Specialty::create([
-           'name' => 'Cardiologo',
+        Office::create([
+           'name' => 'Laboratorio',
            'keyword_state' => 1,
         ]);
     }

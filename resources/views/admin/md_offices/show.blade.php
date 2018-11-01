@@ -1,6 +1,7 @@
+
 <div class="box box-warning">
 	<div class="box-header with-border">
-		<h3 class="box-title">Listado de Especialidades</h3>
+		<h3 class="box-title">Listado de Consultorios</h3>
 		<div class="box-tools pull-right">
 			<button type="button" class="btn btn-box-tool" data-widget="collapse">
 				<i class="fa fa-minus"></i>
@@ -21,17 +22,17 @@
 				</tr>
 			</thead>
       <tbody>
-        @foreach($specialties as $specialty)
+        @foreach($offices as $office)
         <tr>
-          <td>{{$specialty->name}}</td>
-          <td>{{$specialty->state->name}}</td>
+          <td>{{$office->name}}</td>
+          <td>{{$office->state->name}}</td>
           <td class="text-center"><button type="button"
-              data-id="{{$specialty->id}}" class="btn btn-success editar"
+              data-id="{{$office->id}}" class="btn btn-success editar"
               @if(!$editar) disabled @endif>
               <i class="fa fa-pencil"></i>
             </button></td>
           <td class="text-center"><button type="button"
-              data-id="{{$specialty->id}}" data-name="{{$specialty->name}}"
+              data-id="{{$office->id}}" data-name="{{$office->name}}"
               class="btn btn-danger eliminar" data-toggle="modal"
               data-target="#delted" @if(!$eliminar) disabled @endif>
               <i class="fa fa-trash"></i>
@@ -50,21 +51,21 @@
     $(document).on('click','.editar',function(event) {
       $id = $(this).data('id')
       $("#div-edit").html('<div class="box box-success box-solid"><div class="box-header with-border"><h3 class="box-title">Editar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
-      $("#div-edit").load('{{ url("/admin/specialties/") }}/' + $id + '/edit');
+      $("#div-edit").load('{{ url("/admin/offices/") }}/' + $id + '/edit');
     });
     @endif
 
     @if($eliminar)
     $(document).on('click',".eliminar",function(event) {
       $name = $(this).data('name')
-      $('.modal-body').html('<p>¿Esta seguro que quiere eliminar la especialidad ' + $name +'?</p>');
+      $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el consultorio ' + $name +'?</p>');
       $('#confirmaDelete').data('id',$(this).data('id'))
     });
 
     $("#confirmaDelete").on('click',function(event){
       $id = $('#confirmaDelete').data('id');
       $.ajax({
-       url: '{{url("/admin/specialties")}}/'+$id,
+       url: '{{url("/admin/offices")}}/'+$id,
        type:'DELETE',
        data:{_token:'{{csrf_token()}}',
        },

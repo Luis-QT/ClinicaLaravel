@@ -10,24 +10,24 @@
 	</div>
 		
 			<div class="box-body">
-        <form role="form" method="POST" action="{{ url('/admin/specialties') }}/{{$specialty['id']}}">
+        <form role="form" method="POST" action="{{ url('/admin/offices') }}/{{$office['id']}}">
           <input type="hidden" name="_method" value="put" /> {{ csrf_field() }}
   				<div class="form-group">
   					<label for="name">Nombre </label> <input type="text" 
-  						class="form-control" name="name" value="{{ $specialty->name }}"
+  						class="form-control" name="name" value="{{ $office->name }}"
   						required>
   				</div>
   			    <div class="form-group">
   			    	<label>Estado</label>
   			    	<select class="form-control select2" name="state" style="width: 100%;" required>
-  			    		<option @if($specialty->keyword_state == 1) selected @endif value="1">Habilitado</option>
-  						<option @if($specialty->keyword_state == 2) selected @endif value="2">Deshabilitado</option>
+  			    		<option @if($office->keyword_state == 1) selected @endif value="1">Habilitado</option>
+  						<option @if($office->keyword_state == 2) selected @endif value="2">Deshabilitado</option>
   			    	</select>
   			    </div>
   			    <div class="box-boton" style="padding-top: 0px;">
   					<button type="submit" class="btn btn-success"><span><i class="fa fa-edit"></i></span>Editar</button>
   				</div>
-        </form>
-  		</div>
+	   	  </form>
+      </div>
 </div>
 <script> $(document).ready(function(){$('.select2').select2();}) </script>
