@@ -1,0 +1,501 @@
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    vertical-align: middle; 
+}
+
+.table-superCondensed>tbody>tr>td, .table-superCondensed>tbody>tr>th, .table-superCondensed>tfoot>tr>td, .table-superCondensed>tfoot>tr>th, .table-superCondensed>thead>tr>td, .table-superCondensed>thead>tr>th {
+    padding: 2px;
+}
+
+.dataTables_length{
+  padding-left: 15px;
+}
+.dataTables_filter{
+  padding-right: 15px;
+}
+.table-responsive {
+   border: 0px;
+}
+
+/* Da borde a un box color gris , ademas agrega color de fondo a la tabla */
+.box-ajustes{
+    border: 3px solid #d6cece;
+}
+.box-ajustes table{
+  background: #F7FCF1;
+}
+.box-ajustes table thead tr{
+  background: #DEE7DA;
+}
+/*fin box -ajustes*/
+.textarea-ajustes{
+  width: 100%;
+  border: 1px solid #d2d6de;
+  padding: 5px 10px;
+}
+
+
+/****************************** ESTILOS GENERALES ****************************************/
+
+/*.select2-dropdown .select2-search__field:focus, .select2-search--inline .select2-search__field:focus {
+    outline: 0;
+    border: 1px solid #ffffff;
+}*/
+
+/*Esta clase contentra el boton de guardar cambios
+  El div es fexible , y el boton siempre estara al centro
+  El boton tiene espacios arriba y abajo para un mejor aspecto
+*/
+.box-boton{
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+.box-boton>button {
+	margin: 0 10px;
+}
+.box-boton i{
+	margin-right: 5px;
+}
+
+.tabla-centrada td,th{
+	text-align: center;
+}
+.box-refresh{
+    background: 0 0;
+    border : 1px solid transparent;
+    color: #97a0b3;
+}
+
+.tabla-lista-centro>tbody>tr>td , .tabla-lista-derecha>tbody>tr>td{
+  padding: 2px 0px;
+}
+.tabla-lista-centro , .tabla-lista-derecha{
+   table-layout: fixed;
+   width: 100%;
+}
+.tabla-lista-centro td,th{
+  text-align: center;
+  word-wrap: break-word;
+}
+.tabla-lista-derecha td,th{
+  word-wrap: break-word;
+}
+/*Solo el primer elemento estara a la derecha*/
+.tabla-lista-centro td:first-child,.tabla-lista-derecha td:first-child{
+  text-align: left;
+  width:  55%;
+}
+.tabla-lista-derecha td:nth-child(2){
+  width: 45%;
+}
+.tabla-lista-centro td:nth-child(2){
+  text-align: center;
+  width: 45%;
+}
+
+/******************************* PERFILES ESTILOS ******************************************/
+/*Todos los elemos de la tabla estaran centrados*/
+.tabla-perfil td,th{
+	text-align: center;
+}
+/*Solo el primer elemento estara a la derecha*/
+.tabla-perfil td:first-child{
+	text-align: left;
+}
+/*Aumento el tamaño a los checkbox
+  animacion de puntero
+  y sin espacios externos con otros elemntos
+*/ 
+.tabla-perfil input[type="checkbox"]{
+	width: 17px;
+	height: 17px;
+	margin: 0px;
+	cursor: pointer;
+}
+
+
+/******************************** EMPLEADOS ESTILOS ***************************************/
+/*Sin estilos*/
+
+
+/******************************** PEDIDOS ESTILOS *****************************************/
+.tabla-pedidos td,th{
+	text-align: center;
+}
+/*Solo el tercer elemento estara a la derecha*/
+.tabla-pedidos td:nth-child(4){
+	text-align: left;
+}
+/******************************** PRESTAMOS ESTILOS *****************************************/
+.tabla-prestamos td,th{
+	text-align: center;
+}
+/*Solo el tercer elemento estara a la derecha*/
+.tabla-prestamos td:nth-child(3){
+	text-align: left;
+}
+
+/*Estilos de modal informacion usuario*/
+.modal-user .modal-header{
+   background:#828282;
+   color: #ffffff;
+   padding: 8px;
+   border-bottom: 1px solid #e5e5e5;
+   border-bottom-color: #f4f4f4;
+}
+/*Estilos de titulo*/
+.modal-user .modal-title{
+   padding: 8px;
+   font-size: 22px;
+   text-align: center;
+   line-height: 1.20;
+   margin: 0;
+   font-weight: 600;
+   word-wrap: break-word;
+}
+/*color del cuerpo de  modal*/
+.modal-user .modal-body{
+   background: #F1F1F1;
+}
+/*los box -user son las cajas que estan en el cuerpo del modal*/
+.modal-user .box-user{
+   display: block;
+   padding: 10px;
+   line-height: 1.42857143;
+   background-color: #fff;
+   border: 1px solid #ddd;
+   border-radius: 4px;
+   transition: border .2s ease-in-out;
+   word-wrap: break-word;
+   position: relative;
+   width: 100%;
+}
+/*Titulos de las cajas de modal*/
+.modal-user .box-user .sub-box .sub-title{
+   text-align: center;
+   font-size: 17px;
+   margin-bottom:  10px;
+   font-weight:540;
+   word-wrap: break-word;
+}
+
+/*************************** LIBROS ESTILOS *******************************************/
+
+.tabla-libros thead th{
+    background:#E7FAE2;
+}
+.tabla-libros td{
+    text-align: center;
+}
+.tabla-libros td:nth-child(2){
+   text-align: left;
+}
+
+
+
+
+/*********************** ESTILOS LIBRO *************************************/
+
+.box-item {
+   background: #FFFFFF;
+}
+.box-item .caja-cabecera{
+    position: relative;
+    background: #fff;
+    width: 100%;
+    padding: 15px;
+    padding-top: 0px;
+}
+.box-item .caja-cuerpo{
+    position: relative;
+    border-radius: 3px;
+    background: #fff;
+    border: 3px solid #d2d6de;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 15px;
+    /*background: #626216;*/
+}
+.box-item .caja-cabecera .titulo{
+   font-size: 35px;
+   font-weight:540;
+   word-wrap: break-word;
+   color: #185A85;
+}
+.box-item .caja-cabecera .subtitulo{
+   font-size: 20px;
+   font-weight:540;
+   word-wrap: break-word;
+   color: #3F5D71;
+}
+.box-item .caja-cuerpo .subtitulo{
+   font-size: 18px;
+   font-weight: 502;
+   word-wrap: break-word;
+}
+.box-item .linea .primero{
+   float: left;
+   width: 40%;
+   padding-left: 15px;
+   word-wrap: break-word;
+}
+.box-item .linea .segundo{
+   float: left;
+   width: 60%;
+   word-wrap: break-word;
+}
+.box-item .linea{
+   padding-top: 6px; 
+   clear: both;
+}
+.box-item  .caja-editoriales{
+   padding-top: 15px;
+}
+.box-item .caja-cuerpo li{
+  word-wrap: break-word;
+}
+.box-item .box-boton{
+  padding-top: 0px;
+}
+.body-copia-libro{
+  padding: 10px 40px;
+}
+.modal-user .modal-header .modal-subtitle{
+   padding: 0px;
+   font-size: 20px;
+   text-align: center;
+   line-height: 1.20;
+   margin: 0;
+   font-weight: 600;
+   word-wrap: break-word;
+}
+.tabla-copiaItem>tbody>tr>td{
+  padding: 4px 0px;
+}
+.form-group .linea .primero{
+   float: left;
+   width: 40%;
+   word-wrap: break-word;
+}
+.form-group .linea .segundo{
+   float: left;
+   width: 60%;
+   word-wrap: break-word;
+}
+.form-group .linea{
+   padding-top: 6px; 
+   clear: both;
+}
+
+/*********************** ESTILOS TESIS *************************************/
+
+.tabla-tesis thead th{
+    background:#E7FAE2;
+}
+.tabla-tesis td{
+    text-align: center;
+}
+.tabla-tesis td:nth-child(2){
+   text-align: left;
+}
+
+.box-infoTesis .box-body .title{
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: normal;
+  word-spacing: normal;
+  word-wrap: break-word;
+  /*text-align: justify*/
+}
+.box-infoTesis .box-body {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.box-infoTesis .row-espacio {
+  margin-bottom: 10px;
+}
+.box-infoTesis .row tabla-lista-centro td:first-child,.tabla-lista-derecha td:first-child{
+  text-align: left;
+  width:  40%;
+}
+.box-infoTesis .row tabla-lista-derecha td:nth-child(2){
+  width: 60%;
+}
+
+.box-infoTesis .subtitle {
+  font-size: 17px;
+  font-weight: 600;
+}
+.box-infoTesis .box-ajustes{
+  padding: 10px;
+  background: #f7fcf1;
+}
+.box-infoTesis p{
+  word-wrap: break-word;
+  text-align: justify
+}
+
+/**************************** ESTILOS CASTIGOS *****************************/
+
+.box-historialCastigo .box-header .title{
+  padding-top: 6px;
+  font-size: 18px;
+  word-wrap: break-word;
+  margin: 0;
+  line-height: 1;
+}
+
+.tabla-detallesCastigo td:first-child{
+  text-align: left;
+  width:  55%;
+  font-weight: 700;
+}
+.tabla-detallesCastigo td:nth-child(2){
+  width: 45%;
+}
+
+
+/**/
+/*.container{
+  width: 800px;
+  min-height: 600px;
+  margin: auto;
+  padding: 20px;
+  background-color: #FFF;
+  border: solid 1px #CCC;
+}
+.center{
+  text-align: center;
+}
+.form input{
+  width: 80%;
+  padding: 6px;
+}
+.footer{
+  font-size: 14px;
+  color: #ff6905;
+}
+#resultados{
+  min-height: 300px;
+}
+.art{
+  margin-bottom: 10px;
+  background-color: #F1F1F1;
+  padding: 5px;
+}
+.art a{
+  text-decoration: none;
+}
+.titulo{
+  font-size: 22px;
+  text-transform: uppercase;
+}
+.tituloSecundario{
+  font-size: 16px;
+  color: #2E8B57;
+}
+.tituloSecundario a{
+  color: #2E8B57;
+}
+
+
+.contenido{
+  font-size: 16px;
+  color: #666;
+}
+.contenido a{
+  color: #666;
+}
+
+*/
+
+/******************ESTILOS BB***************************/
+/*.arial {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  color: #990000;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.secondaryTitle {
+  color: #006699;
+  font-size: 23px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.subtitle {
+  color: #AEAB09;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.itemTable {
+  color: #077A46;
+}
+
+.modalBody1 {
+  background: #feffe8; /* Old browsers 
+  background: -moz-linear-gradient(left, #feffe8 0%, #ebf2a7 100%);
+  background: -webkit-linear-gradient(left, #feffe8 0%, #ebf2a7 100%);
+  background: linear-gradient(to right, #feffe8 0%, #ebf2a7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feffe8',
+    endColorstr='#ebf2a7', GradientType=1); 
+}
+
+.modalHead1 {
+  background: #eaefb5;
+  background: -moz-linear-gradient(left, #eaefb5 0%, #f9f490 100%);
+  background: linear-gradient(to right, #eaefb5 0%, #f9f490 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eaefb5',
+    endColorstr='#f9f490', GradientType=1); 
+}
+*/
+
+/*********************************************MagazineStiles**********************/
+/*.titleModal1 {
+  color: #990000;
+}
+.dl-horizontalLibro dt {
+  float: left;
+  width: 240px;
+  overflow: hidden;
+  clear: left;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 20px;
+}
+
+
+.box-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.box-footer>button {
+  margin: 0 10px;
+}
+
+.contenido {
+  border: 1px solid black;
+}
+
+.example-modal .modal {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  right: auto;
+  left: auto;
+  display: block;
+  z-index: 1;
+}
+
+.example-modal .modal {
+  background: transparent !important;
+}

@@ -24,7 +24,7 @@
   				</select>
   			</div>
   			<div class="box-boton" style="padding-top: 0px;">
-  				<button type="submit" id="btnCrear" class="btn btn-primary"><span><i class="fa fa-user"></i></span>Crear</button>
+  				<button type="submit" id="btnCrear" class="btn btn-primary"><span><i class="fa fa-paper-plane-o"></i></span>Crear</button>
   			</div>
       </form>
 		</div>

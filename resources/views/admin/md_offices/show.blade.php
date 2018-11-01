@@ -8,8 +8,6 @@
 			</button>
 		</div>
 	</div>
-	<br>
-
 	<div class="box-body table-responsive">
 
 		<table class="table table-bordered table-striped  table-hover dataTable">
@@ -27,13 +25,13 @@
           <td>{{$office->name}}</td>
           <td>{{$office->state->name}}</td>
           <td class="text-center"><button type="button"
-              data-id="{{$office->id}}" class="btn btn-success editar"
+              data-id="{{$office->id}}" class="btn btn-sm btn-success editar"
               @if(!$editar) disabled @endif>
               <i class="fa fa-pencil"></i>
             </button></td>
           <td class="text-center"><button type="button"
               data-id="{{$office->id}}" data-name="{{$office->name}}"
-              class="btn btn-danger eliminar" data-toggle="modal"
+              class="btn btn-sm btn-danger eliminar" data-toggle="modal"
               data-target="#delted" @if(!$eliminar) disabled @endif>
               <i class="fa fa-trash"></i>
             </button></td>
