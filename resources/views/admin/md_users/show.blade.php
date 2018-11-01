@@ -37,7 +37,7 @@
 					<td>{{ $user->lastName }}</td>
 					<td>{{ $user->email }}</td>
 					<td>{{ $user->profile->name }}</td>
-					<td>{{ $user->getState() }}</td>
+					<td>{{ $user->state->name }}</td>
 					<td><button type="button" data-id="{{$user->id}}"
 							class="btn btn-success editar" @if(!$editar) disabled @endif>
 							<i class="fa fa-pencil"></i>

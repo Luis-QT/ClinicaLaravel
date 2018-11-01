@@ -32,4 +32,4 @@
 
     </div>
 </section>
-@endsection
+{!! $delete !!} @endsection
