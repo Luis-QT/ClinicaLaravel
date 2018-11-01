@@ -31,28 +31,30 @@
 					<th>Editar</th>
 					<th>Eliminar</th>
 				</thead>
+        <tbody>
 				@foreach($doctors as $i => $doctor)
-				<tbody>
-					<td>{{ $i+1 }}</td>
-					<td>{{ $doctor->name }}</td>
-					<td>{{ $doctor->lastName }}</td>
-          <td>{{ $doctor->email }}</td>
-          <td>{{ $doctor->phone }}</td>
-					<td>{{ $doctor->specialty->name }}</td>
-					<td>{{ $doctor->address }}</td>
-					<td><button type="button" data-id="{{$doctor->id}}"
-              data-toggle="modal" data-target="#modalEdit"
-							class="btn btn-success editar" @if(!$editar) disabled @endif>
-							<i class="fa fa-pencil"></i>
-						</button></td>
-					<td><button type="button" data-id="{{$doctor->id}}"
-							data-name="{{$doctor->name}}" class="btn btn-danger eliminar"
-							data-toggle="modal" data-target="#delted"
-							@if(!$eliminar) disabled @endif>
-							<i class="fa fa-trash"></i>
-						</button></td>
-				</tbody>
+          <tr>
+  					<td>{{ $i+1 }}</td>
+  					<td>{{ $doctor->name }}</td>
+  					<td>{{ $doctor->lastName }}</td>
+            <td>{{ $doctor->email }}</td>
+            <td>{{ $doctor->phone }}</td>
+  					<td>{{ $doctor->specialty->name }}</td>
+  					<td>{{ $doctor->address }}</td>
+  					<td><button type="button" data-id="{{$doctor->id}}"
+                data-toggle="modal" data-target="#modalEdit"
+  							class="btn btn-success editar" @if(!$editar) disabled @endif>
+  							<i class="fa fa-pencil"></i>
+  						</button></td>
+  					<td><button type="button" data-id="{{$doctor->id}}"
+  							data-name="{{$doctor->name}}" class="btn btn-danger eliminar"
+  							data-toggle="modal" data-target="#delted"
+  							@if(!$eliminar) disabled @endif>
+  							<i class="fa fa-trash"></i>
+  						</button></td>
+          </tr>
 				@endforeach
+        </tbody>
 			</table>
 		</div>
 	</div>
@@ -68,14 +70,14 @@
 <script type="text/javascript">
   $(document).ready(function() {
     @if($editar)
-    $(".editar").on('click',function(event) {
+    $(document).on('click',".editar",function(event) {
       $id = $(this).data('id');
       $(".modalEdit").html('<div class="box box-success box-solid"><div class="box-header with-border"><h3 class="box-title">Editar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
       $(".modalEdit").load('{{ url("/admin/doctors/") }}/' + $id + '/edit');
     });
     @endif
 
-    $(".eliminar").on('click',function(event) {
+    $(document).on('click',".eliminar",function(event) {
       $name = $(this).data('name')
       $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el médico ' + $name +'?</p>');
       $('#confirmaDelete').data('id',$(this).data('id'))

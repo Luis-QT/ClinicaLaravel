@@ -19,7 +19,7 @@
             </div>
         </div>
 		<div class="table-responsive">
-			<table class="table table-bordered table-hover  dataTable">
+			<table class="table table-bordered table-hover dataTable">
 				<thead>
 					<th>#</th>
 					<th>Nombre</th>
@@ -30,27 +30,29 @@
 					<th>Editar</th>
 					<th>Eliminar</th>
 				</thead>
+        <tbody>
 				@foreach($users as $i => $user)
-				<tbody>
-					<td>{{ $i+1 }}</td>
-					<td>{{ $user->name }}</td>
-					<td>{{ $user->lastName }}</td>
-					<td>{{ $user->email }}</td>
-					<td>{{ $user->profile->name }}</td>
-					<td>{{ $user->state->name }}</td>
-					<td><button type="button" data-id="{{$user->id}}"
-              data-toggle="modal" data-target="#modalEdit"
-							class="btn btn-success editar" @if(!$editar) disabled @endif>
-							<i class="fa fa-pencil"></i>
-						</button></td>
-					<td><button type="button" data-id="{{$user->id}}"
-							data-name="{{$user->name}}" class="btn btn-danger eliminar"
-							data-toggle="modal" data-target="#delted"
-							@if(!$eliminar) disabled @endif>
-							<i class="fa fa-trash"></i>
-						</button></td>
-				</tbody>
-				@endforeach
+          <tr>
+  					<td>{{ $i+1 }}</td>
+  					<td>{{ $user->name }}</td>
+  					<td>{{ $user->lastName }}</td>
+  					<td>{{ $user->email }}</td>
+  					<td>{{ $user->profile->name }}</td>
+  					<td>{{ $user->state->name }}</td>
+  					<td><button type="button" data-id="{{$user->id}}"
+                data-toggle="modal" data-target="#modalEdit"
+  							class="btn btn-success editar" @if(!$editar) disabled @endif>
+  							<i class="fa fa-pencil"></i>
+  						</button></td>
+  					<td><button type="button" data-id="{{$user->id}}"
+  							data-name="{{$user->name}}" class="btn btn-danger eliminar"
+  							data-toggle="modal" data-target="#delted"
+  							@if(!$eliminar) disabled @endif>
+  							<i class="fa fa-trash"></i>
+  						</button></td>
+  				</tr>
+        @endforeach
+        </tbody>
 			</table>
 		</div>
 	</div>
@@ -66,14 +68,14 @@
 <script type="text/javascript">
   $(document).ready(function() {
     @if($editar)
-    $(".editar").on('click',function(event) {
+    $(document).on('click',".editar",function(event) {
       $id = $(this).data('id');
       $(".modalEdit").html('<div class="box box-success box-solid"><div class="box-header with-border"><h3 class="box-title">Editar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
       $(".modalEdit").load('{{ url("/admin/users/") }}/' + $id + '/edit');
     });
     @endif
 
-    $(".eliminar").on('click',function(event) {
+    $(document).on('click',".eliminar",function(event) {
       $name = $(this).data('name')
       $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el usuario ' + $name +'?</p>');
       $('#confirmaDelete').data('id',$(this).data('id'))
