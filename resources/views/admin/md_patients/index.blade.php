@@ -39,9 +39,9 @@
     </div>
 </section>
 
-@include('patients.modalAdd')
-@include('patients.modalEdit')
-@include('patients.modalDelete')
+@include('admin.md_patients.modalAdd')
+@include('admin.md_patients.modalEdit')
+@include('admin.md_patients.modalDelete')
 
 <section class="content">
     <div class="row">

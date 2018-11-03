@@ -27,7 +27,7 @@
 	<td>{{ $patient->phone }}</td>
 	<td>{{ $patient->address }}</td>
 	<td>{{ $patient->email }}</td>
-	<td>{{ $patient->genero == 0 ? 'Masculino' : 'Femenino' }}</td>
+	<td>{{ $patient->gender == 0 ? 'Masculino' : 'Femenino' }}</td>
 	<td>
 		<div class="btn-group pull-right">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Acciones <span class="fa fa-caret-down"></span>
@@ -36,7 +36,7 @@
 				<li>
 					<a class="editPatient" data-toggle="modal" data-target="#modalEdit" 
 					data-my_name="{{$patient->name}}" data-my_lastname="{{$patient->lastName}}"data-my_birthdate="{{$patient->birthdate}}" 
-					data-my_phone="{{$patient->phone}}" data-my_address="{{$patient->address}}" data-my_email="{{$patient->email}}" data-my_genre="{{$patient->	genero}}" 
+					data-my_phone="{{$patient->phone}}" data-my_address="{{$patient->address}}" data-my_email="{{$patient->email}}" data-my_gender="{{$patient->gender}}" 
 					data-my_id="{{$patient->id}}"><i class="fa fa-edit"></i> Editar</a>
 				</li>
 				<li>
@@ -59,7 +59,7 @@
 	        $("input[name='edit_phone']").val($(this).data("my_phone"));
 	        $("input[name='edit_address']").val($(this).data("my_address"));
 	        $("input[name='edit_email']").val($(this).data("my_email"));
-	        $("select[name='edit_genero']").val($(this).data("my_genre"));
+	        $("select[name='edit_gender']").val($(this).data("my_gender"));
 	        
 	        $urlEditar = 'patients/'+$(this).data("my_id");
 	        $("#form-edit").attr('action',$urlEditar);

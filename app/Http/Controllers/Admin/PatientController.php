@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Patient;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,11 +11,11 @@ class PatientController extends Controller
      public function index()
    {	
       $patients = Patient::all();
-      $table = view('patients.table',[
+      $table = view('admin.md_patients.table',[
         'patients' => $patients
       ]);
 
-   	   return view('patients.index',[
+   	   return view('admin.md_patients.index',[
         'table' => $table
        ]);
    }
@@ -36,10 +36,10 @@ class PatientController extends Controller
        'birthdate'=> $request->birthDate,
        'phone'    => $request->phone,
        'address'  => $request->address,
-       'genero'   => $request->genero
+       'gender'   => $request->gender
      ]);
 
-     return redirect('patients');  
+     return redirect('/admin/patients');  
    }
 
    /**
@@ -69,11 +69,11 @@ class PatientController extends Controller
      $patient->birthDate= $request->edit_birthdate;
      $patient->phone    = $request->edit_phone;
      $patient->address  = $request->edit_address;
-     $patient->genero   = $request->edit_genero;
+     $patient->gender   = $request->edit_gender;
 
      $patient->save();
 
-     return redirect('patients');
+     return redirect('/admin/patients');
    }
   
    public function destroy($id)
@@ -81,7 +81,7 @@ class PatientController extends Controller
       $patient = Patient::find($id);
       $patient->delete();
    
-     return redirect('patients');
+     return redirect('/admin/patients');
    }
 
    public function search(Request $request)
@@ -91,7 +91,7 @@ class PatientController extends Controller
       $patients = Patient::where('name', 'like', '%'.$request->name.'%')
           ->Where('lastName','like','%'.$request->lastname.'%')->get();
       
-      return view('patients.table',[
+      return view('admin.md_patients.table',[
         'patients' => $patients
       ])->render();  
    }

@@ -44,7 +44,7 @@
       </li>
       <li class="@if(URL::full() == url('/admin/specialties')) active @endif" ><a href="{{ url('/admin/specialties') }}"><i class="fa fa-mortar-board "></i> <span>Especialidades</span></a></li>
       <li class="@if(URL::full() == url('/admin/offices')) active @endif" ><a href="{{ url('/admin/offices') }}"><i class="fa fa-hotel "></i> <span>Consultorios</span></a></li>
-      <li><a href="{{ url('/patients') }}"><i class="fa fa-wheelchair"></i> <span>Pacientes</span></a></li>
+      <li><a href="{{ url('admin/patients') }}"><i class="fa fa-wheelchair"></i> <span>Pacientes</span></a></li>
       <li class="@if(URL::full() == url('/admin/doctors')) active @endif" ><a href="{{ url('/admin/doctors') }}"><i class="fa fa-user-md"></i> <span>Médicos</span></a></li>
       <li><a href="#"><i class="fa fa-stethoscope"></i> <span>Another Link</span></a></li>
     <!-- /.sidebar-menu -->

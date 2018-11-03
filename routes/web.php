@@ -34,13 +34,10 @@ Route::group(['middleware'=>'auth'], function(){
       Route::resource('/admin/profiles', 'ProfileController');
       Route::resource('/admin/users', 'UserController');
       Route::resource('/admin/doctors', 'DoctorController');
+
+      Route::resource('/admin/patients','PatientController');
+      Route::post('/admin/patients/search','PatientController@search')->name('searchPatient');
   });
 });
 
-Route::group(['middleware'=>'auth'], function(){
-	Route::namespace('Patient')->group(function(){
-		Route::resource('/patients','PatientController');
-		Route::post('/patients/search','PatientController@search')->name('searchPatient');
-	});
-});
 
