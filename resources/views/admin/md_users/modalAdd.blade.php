@@ -10,59 +10,73 @@
                </div>
               </div>
               <div class="panel-body" style="padding: 15px;">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Nombre</label>
-                      <input type="text" name="" class="form-control">
+                <form method="POST" action="{{ route('users.store') }}">
+                {{ csrf_field() }}
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="name" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Apellido</label>
+                        <input type="text" name="lastName" class="form-control">
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Apellido</label>
-                      <input type="text" name="" class="form-control">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" name="email" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Estado</label>
+                        <select class="form-control select2" name="state" style="width: 100%;">
+                          <option value="1">Habilitado</option>
+                          <option value="2">Deshabilitado</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Email</label>
-                      <input type="text" name="" class="form-control">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Perfil</label>
+                        <select class="form-control select2" name="profile" style="width: 100%;">
+                          @foreach($profiles as $profile)
+                            <option value="{{$profile->id}}">{{$profile->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" name="password" class="form-control">
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Estado</label>
-                      <select class="form-control select2" style="width: 100%;">
-                        <option>Habilitado</option>
-                        <option>Deshabilitado</option>
-                      </select>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Confirmar contraseña</label>
+                        <input type="password" name="password2" class="form-control">
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Perfil</label>
-                      <input type="text" name="" class="form-control">
+                  <div class="row">
+                    <div class="form-group text-center">
+                       <button type="submit" class="btn btn-primary" style="padding:8px 50px;margin-top:25px;">
+                           Agregar Usuario
+                       </button>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Contraseña</label>
-                      <input type="password" name="" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label>Confirmar contraseña</label>
-                      <input type="password" name="" class="form-control">
-                    </div>
-                  </div>
-                </div>
+                </form>
               </div>
             </div>
         </div>

@@ -1,4 +1,3 @@
-
 <div class="box box-warning">
 	<div class="box-header with-border">
 		<h3 class="box-title">Listado de Especialidades</h3>
@@ -8,8 +7,6 @@
 			</button>
 		</div>
 	</div>
-	<br>
-
 	<div class="box-body table-responsive">
 
 		<table class="table table-bordered table-striped  table-hover dataTable">
@@ -27,13 +24,13 @@
           <td>{{$specialty->name}}</td>
           <td>{{$specialty->state->name}}</td>
           <td class="text-center"><button type="button"
-              data-id="{{$specialty->id}}" class="btn btn-success editar"
+              data-id="{{$specialty->id}}" class="btn btn-sm btn-success editar"
               @if(!$editar) disabled @endif>
               <i class="fa fa-pencil"></i>
             </button></td>
           <td class="text-center"><button type="button"
               data-id="{{$specialty->id}}" data-name="{{$specialty->name}}"
-              class="btn btn-danger eliminar" data-toggle="modal"
+              class="btn btn-sm btn-danger eliminar" data-toggle="modal"
               data-target="#delted" @if(!$eliminar) disabled @endif>
               <i class="fa fa-trash"></i>
             </button></td>
@@ -81,46 +78,5 @@
 
     })
     @endif
-  });
-</script>
-<script>
-  $(function () {
-    $(".tabla-espacialidades").DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "stateSave": false, //Guarda el estado actual de la pagina
-      "language" : {
-          "sProcessing" : "Procesando...",
-          "sLenghtMenu" : "Mostrar _MENU_ registros",
-          "sZeroRecords" : "No se encontraron resultados",
-          "sEmptyTable" : "Ningún dato disponible en esta tabla",
-          "sInfo" : "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-          "sInfoEmpty" : "Mostrando registros del 0 al 0 de un total de 0 registros",
-          "sInfoFiltered" : "(filtrado de un total de _MAX_ registros",
-          "sInfoPosFix" : "",
-          "sSearch" : "Buscar: ",
-          "sUrl" : "" ,
-          "sInfoThousands": ",",
-          "sLoadingRecords" : "Cargando...",
-          "oPaginate": {
-              "sFirst" : "Primero",
-              "sLast" : "Último",
-              "sNext" : "Siguiente" ,
-              "sPrevious" : "Anterior"
-          },
-          "oAria" : {
-              "sSortAscending" : ": Actibar para ordenar la columna de manera ascendente",
-              "sSordtDescending" : ": Activar para ordenar la columna de manera descendente"
-          },
-          "lengthMenu" : "Mostrar _MENU_ registros por pagina",
-          "zeroRecords": "No se encontraron registros",
-          "info" : "Página _PAGE_ de _PAGES_",
-          "infoEmpty" : "No hay registros"
-      },
-    });
   });
 </script>

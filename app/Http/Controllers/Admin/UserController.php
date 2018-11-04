@@ -29,6 +29,7 @@ class UserController extends Controller
 
        if ($ver) {
          $show = view('admin.md_users.show', [
+            'profiles' => $perfiles,
             'users' => $users,
             'crear' => $crear,
             'editar' => $editar,
@@ -60,11 +61,15 @@ class UserController extends Controller
 
    public function store(Store $request)
    {
-      Profile::create([
-         'name' => $request->name,
-         'permissions' =>'Perfiles,0,0,0,0;Usuarios,0,0,0,0;'
+      User::create([
+        'name' => $request->name,
+        'lastName' => $request->lastName,
+        'email' => $request->email, 
+        'password' => $request->password,
+        'keyword_state' => $request->state, 
+        'profile_id' => $request->profile,
       ]);
-      return redirect('admin/profiles');
+      return redirect('admin/users');
    }
 
    /**
@@ -80,44 +85,36 @@ class UserController extends Controller
 
    public function edit($id)
    {
-      $perfil = Profile::find($id);
-      $matriz = Profile::decodificar($perfil->permissions);
-      return view('admin.md_profiles.edit', [
-         'perfil' => $perfil,
-         'matrizPerfil' => $matriz
+      $user = User::find($id);
+      $profiles=Profile::all();
+      return view('admin.md_users.modalEdit', [
+         'user' => $user,
+         'profiles' => $profiles
       ]);
    }
 
    public function update(Request $request, $id)
    {  
-     //Esta ultima validacion es por si alguna persona quiere activar el boton editar con F12
-     if($id!=1){
-      $profile = Profile::find($id);
-      $profile->setPermissions($request);
-      $profile->save();
-     }
-     return redirect('admin/profiles');
+      $user = User::find($id);
+      $user->name = $request->name;
+      $user->lastName = $request->lastName;
+      $user->email = $request->email;
+      $user->password = $request->password;
+      $user->keyword_state = $request->state;
+      $user->profile_id = $request->profile;
+
+      $user->save();
+
+      return redirect('admin/users');
    }
   
    public function destroy($id)
    {  
-
-      $profile = Profile::find($id);
+      $user = User::find($id);
       $txt="1";
-      //Verifica que no sea el perfil "Admin"
-      if($profile->id==1){
-        $txt="No se puedo eliminar el perfil\n- El perfil Admin es fijo";
-      }else if($profile->users->isNotEmpty()){
-        //Verifica que no tenga relaciones con empleados
-        $txtUsers="";
-        foreach ($profile->users as $user) {
-            $txtUsers.=" - ".$user->name."\n";
-        }
-        $txt="No se pudo eliminar el perfil\nTiene relacion con usuarios:\n".$txtUsers;
-        $txt.="\n\nNota:Para eliminar este perfil debe cambiar el perfil de los usuarios";
-      }else{
-        $profile->delete();
-      }
+      
+      $user->delete();
+
       return $txt;
    }
 }

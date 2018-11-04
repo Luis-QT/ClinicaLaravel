@@ -20,7 +20,7 @@ class Specialties extends Seeder
            'name' => 'Oftalmologo',
            'keyword_state' => 1,
         ]);
-		Specialty::create([
+		    Specialty::create([
            'name' => 'Cardiologo',
            'keyword_state' => 1,
         ]);
