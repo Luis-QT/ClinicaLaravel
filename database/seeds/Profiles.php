@@ -14,7 +14,7 @@ class Profiles extends Seeder
     {
         Profile::create([
            'name' => 'Admin',
-           'permissions' => 'Perfiles,1,1,1,1;Usuarios,1,1,1,1;Especialidades,1,1,1,1;Consultorios,1,1,1,1;Pacientes,1,1,1,1;Médicos,1,1,1,1',
+           'permissions' => 'Perfiles,1,1,1,1;Usuarios,1,1,1,1;Especialidades,1,1,1,1;Consultorios,1,1,1,1;Pacientes,1,1,1,1;Médicos,1,1,1,1;Configuraciones,1,1,1,1',
         ]);
     }
 }

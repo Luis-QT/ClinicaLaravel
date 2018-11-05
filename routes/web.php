@@ -26,7 +26,6 @@ Route::get('/logoutKit', 'LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-
 Route::group(['middleware'=>'auth'], function(){
   Route::namespace('Admin')->group(function () {
       Route::resource('/admin/specialties', 'SpecialtyController');
@@ -41,6 +40,8 @@ Route::group(['middleware'=>'auth'], function(){
       Route::resource('/admin/meetings','MeetingController');
       Route::post('/admin/meetings/searchBetweenDates','MeetingController@searchBetweenDates');
       Route::post('/admin/meetings/searchByState','MeetingController@searchByState');
+
+      Route::resource('/admin/configurations', 'ConfigurationController');
   });
 });
 

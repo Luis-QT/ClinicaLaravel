@@ -18,9 +18,9 @@ class Meeting extends Model
    	   'office_id',
    	];
 
-      public function state(){
-          return $this->belongsTo('App\Keyword','keyword_state');
-       }
+    public function state(){
+        return $this->belongsTo('App\Keyword','keyword_state');
+     }
 
    	public function doctor(){
    	    return $this->belongsTo('App\Doctor','doctor_id');

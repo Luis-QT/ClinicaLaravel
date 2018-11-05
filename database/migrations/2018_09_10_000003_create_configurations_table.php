@@ -20,8 +20,7 @@ class CreateConfigurationsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('logo');
-
-
+            $table->string('address');
             $table->timestamps();
         });
     }
