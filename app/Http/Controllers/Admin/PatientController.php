@@ -55,7 +55,11 @@ class PatientController extends Controller
 
    public function edit($id)
    {
-      
+      $patient  = Patient::find($id);
+
+      return view('admin.md_patients.modalEdit', [
+         'patient' => $patient
+      ]);
    }
 
    public function update(Request $request, $id)

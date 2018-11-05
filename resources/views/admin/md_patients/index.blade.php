@@ -40,7 +40,6 @@
 </section>
 
 @include('admin.md_patients.modalAdd')
-@include('admin.md_patients.modalEdit')
 @include('admin.md_patients.modalDelete')
 
 <section class="content">
@@ -67,8 +66,8 @@
 </section>
 
 <script type="text/javascript">
-    $('.datepicker').datepicker({
-            format: "yyyy/mm/dd"
+    $('.datepicker').datetimepicker({
+        format: "YYYY/MM/DD"
     });
         
     $.ajaxSetup({

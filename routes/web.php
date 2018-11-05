@@ -37,6 +37,10 @@ Route::group(['middleware'=>'auth'], function(){
 
       Route::resource('/admin/patients','PatientController');
       Route::post('/admin/patients/search','PatientController@search')->name('searchPatient');
+
+      Route::resource('/admin/meetings','MeetingController');
+      Route::post('/admin/meetings/searchBetweenDates','MeetingController@searchBetweenDates');
+      Route::post('/admin/meetings/searchByState','MeetingController@searchByState');
   });
 });
 
