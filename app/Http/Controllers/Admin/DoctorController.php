@@ -70,6 +70,7 @@ class DoctorController extends Controller
         'phone' => $request->phone,
         'address' => $request->address,
         'specialty_id' => $request->specialty,
+        'photo' => $request->photo,
       ]);
       return redirect('admin/doctors');
    }
@@ -104,6 +105,7 @@ class DoctorController extends Controller
       $doctor->phone = $request->phone;
       $doctor->address = $request->address;
       $doctor->specialty_id = $request->specialty;
+      $doctor->photo = $request->photo;
 
       $doctor->save();
 

@@ -18,7 +18,8 @@
       <!--------------------------
         | Your Page Content Here |
         -------------------------->
-
+        <div id="perf_div"></div> 
+        @columnchart('Finances', 'perf_div')
     </section>
     <!-- /.content -->
 

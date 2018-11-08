@@ -20,6 +20,7 @@ class CreateDoctorsTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('address');
+            $table->string('photo');
             $table->integer('specialty_id')->unsigned();
             $table->foreign('specialty_id')->references('id')->on('specialties');
             $table->timestamps();

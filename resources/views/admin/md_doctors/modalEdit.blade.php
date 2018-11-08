@@ -12,6 +12,11 @@
             <form role="form" method="POST" action="{{ url('/admin/doctors') }}/{{$doctor['id']}}">
             <input type="hidden" name="_method" value="put" /> {{ csrf_field() }}
               <div class="row">
+                <div class="col-md-12 text-center">
+                  <img src="{{$doctor->photo}}" width="200px">
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Nombre</label>
@@ -55,6 +60,12 @@
                     <label>Direccion</label>
                     <textarea class="form-control" name="address">{{$doctor->address}}</textarea> 
                   </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Foto</label>
+                    <textarea class="form-control" name="photo">{{$doctor->photo}}</textarea>
                 </div>
               </div>
               <div class="row">

@@ -161,6 +161,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
     ],
 
     /*
@@ -211,7 +212,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
-
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
     ],
 
 ];

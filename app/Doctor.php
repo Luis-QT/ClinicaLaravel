@@ -15,6 +15,7 @@ class Doctor extends Model
         'phone',
         'address',
         'specialty_id',
+        'photo'
     ];
 
     public function specialty(){

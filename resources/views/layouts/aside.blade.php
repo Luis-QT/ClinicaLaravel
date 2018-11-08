@@ -31,6 +31,7 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MENÚ DE NAVEGACIÓN</li>
       <!-- Optionally, you can add icons to the links -->
+      <li class="@if(URL::full() == url('/admin')) active @endif" ><a href="{{ url('/admin') }}"><i class="fa fa-home "></i> <span>Inicio</span></a></li>
       <li class="treeview @if(URL::full() == url('/admin/users') || URL::full() == url('/admin/profiles')) active @endif" >
         <a href="#"><i class="fa fa-sitemap"></i> <span>Administración</span>
           <span class="pull-right-container">
