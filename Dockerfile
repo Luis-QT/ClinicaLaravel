@@ -1,4 +1,4 @@
-FROM luisqt/servidor_laravel
+FROM luisqt/server-laravel
 
 ENV APP_HOME /var/www/html
 
