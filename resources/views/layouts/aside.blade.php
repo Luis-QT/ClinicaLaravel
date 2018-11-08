@@ -48,6 +48,20 @@
       <li class="@if(URL::full() == url('/admin/doctors')) active @endif" ><a href="{{ url('/admin/doctors') }}"><i class="fa fa-user-md"></i> <span>Médicos</span></a></li>
       <li class="@if(URL::full() == url('/admin/meetings')) active @endif" ><a href="{{ url('/admin/meetings') }}"><i class="fa fa-medkit"></i> <span>Citas</span></a></li>
       <li class="@if(URL::full() == url('/admin/configurations')) active @endif" ><a href="{{ url('/admin/configurations') }}"><i class="fa fa-gear"></i> <span>Configuraciones</span></a></li>
+      
+      <li class="treeview" >
+        <a href="#"><i class="glyphicon glyphicon-signal"></i> <span>Reportes</span>
+          <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="{{ url('/admin/reportsbyPatient') }}"><i class="fa fa-bar-chart"></i><span>Citas por paciente</span></a></li>
+          <li><a href="{{ url('/admin/reportsbyDoctor') }}"><i class="fa fa-line-chart"></i><span>Citas por medicos</span></a></li>
+          <li><a href="{{ url('/admin/reportsbyOffice') }}"><i class="fa fa-bar-chart"></i><span>Citas por consultorios</span></a></li>
+          <li><a href="{{ url('/admin/reportsbyCalendar') }}"><i class="fa fa-line-chart"></i><span>Citas en calendario</span></a></li>
+        </ul>
+      </li>  
       <li><a href="#"><i class="fa fa-stethoscope"></i> <span>Another Link</span></a></li>
     <!-- /.sidebar-menu -->
   </section>

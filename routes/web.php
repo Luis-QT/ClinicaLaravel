@@ -42,6 +42,17 @@ Route::group(['middleware'=>'auth'], function(){
       Route::post('/admin/meetings/searchByState','MeetingController@searchByState');
 
       Route::resource('/admin/configurations', 'ConfigurationController');
+
+      Route::get('/admin/reportsbyPatient','ReportByPatientController@index');
+      Route::post('/admin/reportsbyPatient','ReportByPatientController@filter');
+      
+      Route::get('/admin/reportsbyDoctor','ReportByDoctorController@index');
+      Route::post('/admin/reportsbyDoctor','ReportByDoctorController@filter');
+      
+      Route::get('/admin/reportsbyOffice','ReportByOfficeController@index');
+      Route::post('/admin/reportsbyOffice','ReportByOfficeController@filter');
+
+      Route::get('/admin/reportsbyCalendar','ReportByCalendarController@index');
   });
 });
 

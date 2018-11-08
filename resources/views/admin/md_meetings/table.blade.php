@@ -1,4 +1,4 @@
-<table class="table table-bordered table-hover dataTable">
+<table class="table table-bordered table-hover">
 	<tr>
 		<th>#</th>
 		<th>Fecha</th>

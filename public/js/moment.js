@@ -772,13 +772,13 @@
     // LOCALES
 
     var MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/;
-    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
+    var defaultLocaleMonths = 'Enero_Febrero_Marzo_Abril_Mayo_Junio_Julio_Agosto_Setiembre_Octubre_Noviembre_Diciembre'.split('_');
     function localeMonths (m, format) {
         return isArray(this._months) ? this._months[m.month()] :
             this._months[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
     }
 
-    var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
+    var defaultLocaleMonthsShort = 'Ene_Feb_Mar_Abr_May_Jun_Jul_Ago_Set_Oct_Nov_Dic'.split('_');
     function localeMonthsShort (m, format) {
         return isArray(this._monthsShort) ? this._monthsShort[m.month()] :
             this._monthsShort[MONTHS_IN_FORMAT.test(format) ? 'format' : 'standalone'][m.month()];
@@ -2654,18 +2654,18 @@
 
     // LOCALES
 
-    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
+    var defaultLocaleWeekdays = 'Domingo_Lunes_Martes_Miercoles_Jueves_Viernes_Sabado'.split('_');
     function localeWeekdays (m, format) {
         return isArray(this._weekdays) ? this._weekdays[m.day()] :
             this._weekdays[this._weekdays.isFormat.test(format) ? 'format' : 'standalone'][m.day()];
     }
 
-    var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
+    var defaultLocaleWeekdaysShort = 'Dom_Lun_Mar_Mie_Jue_Vie_Sab'.split('_');
     function localeWeekdaysShort (m) {
         return this._weekdaysShort[m.day()];
     }
 
-    var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
+    var defaultLocaleWeekdaysMin = 'Do_Lu_Ma_Mi_Ju_Vi_Sa'.split('_');
     function localeWeekdaysMin (m) {
         return this._weekdaysMin[m.day()];
     }
@@ -3106,11 +3106,11 @@
     }
 
     var defaultCalendar = {
-        sameDay : '[Today at] LT',
-        nextDay : '[Tomorrow at] LT',
+        sameDay : '[Hoy at] LT',
+        nextDay : '[Mañana at] LT',
         nextWeek : 'dddd [at] LT',
-        lastDay : '[Yesterday at] LT',
-        lastWeek : '[Last] dddd [at] LT',
+        lastDay : '[Ayer at] LT',
+        lastWeek : '[Ultimo] dddd [at] LT',
         sameElse : 'L'
     };
 
@@ -3143,7 +3143,7 @@
         return this._longDateFormat[key];
     }
 
-    var defaultInvalidDate = 'Invalid date';
+    var defaultInvalidDate = 'Fecha invalida';
 
     function invalidDate () {
         return this._invalidDate;
