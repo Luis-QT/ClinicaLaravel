@@ -33,9 +33,10 @@ class HomeController extends Controller
         $meetings = Meeting::where('date','like',$currentYear.'%')
                 ->get(); //Citas del presente año
 
+        $meses = ['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Setiembre','Octubre','Noviembre','Diciembre'];
 
         $values = Lava::DataTable();
-        $values ->addDateColumn('Meses')
+        $values ->addStringColumn('Meses')
                 ->addNumberColumn('Asignadas')
                 ->addNumberColumn('Atendidas');
 
@@ -54,18 +55,24 @@ class HomeController extends Controller
                     return $val->keyword_state == 2;
                 });
 
-                $values->addRow([$currentYear.'-'.$month,$meetingsAssigned->count(),$meetingsAttended->count()]);
+                $values->addRow([$meses[$i],$meetingsAssigned->count(),$meetingsAttended->count()]);
             }
         }
                 
         Lava::ColumnChart('Finances', $values, [
             'title' => 'Citas del '.$currentYear,
             'titleTextStyle' => [
-                'color'    => 'black',
+                'display'    => 'none',
                 'fontSize' => 14
             ],
-            'height' => 350,
-            'isStacked' => false
+            'bar' => [
+                'groupWidth' => '100%'
+            ],
+            'height' => 440,
+            'isStacked' => false,
+            'legend' => [
+                    'position' => 'none'
+            ]
         ]);
             
         return view('home',[
