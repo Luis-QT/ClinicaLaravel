@@ -163,6 +163,7 @@ return [
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -215,6 +216,7 @@ return [
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

@@ -9,6 +9,9 @@ use App\Doctor;
 use App\Patient;
 use App\Office;
 use App\Keyword;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MeetingExport;
 
 
 class MeetingController extends Controller
@@ -119,4 +122,27 @@ class MeetingController extends Controller
         'meetings' => $meetings
       ])->render();  
    }
+
+   public function viewPDF(){
+        $meetings = Meeting::all();
+        $pdf = PDF::loadView('admin.md_meetings.export.pdf',[
+          'meetings' => $meetings,
+        ]);
+        $pdf->setPaper("A4", "potrait");
+        return $pdf->stream('Citas.pdf');
+    }
+
+    public function exportPDF(){
+        $meetings = Meeting::all();
+        $pdf = PDF::loadView('admin.md_meetings.export.pdf',[
+          'meetings' => $meetings,
+        ]);
+        $pdf->setPaper("A4", "potrait");
+        return $pdf->download('Citas.pdf');
+    }
+
+    public function exportExcel(){
+       return Excel::download(new MeetingExport, 'Citas.xlsx');
+    }
+
 }

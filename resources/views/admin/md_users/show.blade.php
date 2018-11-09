@@ -10,9 +10,9 @@
 	<div class="box-body">
 		<div class="clearfix div-top-table">
             <div class="pull-left">
-              <a type="button" target="_blank" href="{{ url('/admin/theses/viewPDF') }}" class="btn btn-default"><i class="fa fa-eye"></i> Vista PDF</a>
-              <a type="button" href="{{ url('/admin/theses/exportPDF') }}" class="btn btn-default"><i class="fa fa-file-pdf"></i> PDF</a>
-              <a type="button" href="{{ url('/admin/theses/exportExcel') }}" class="btn btn-default"><i class="fas fa-file-excel"></i> EXCEL</a>
+              <a type="button" target="_blank" href="{{ url('/admin/users/viewPDF') }}" class="btn btn-default"><i class="fa fa-eye"></i> Vista PDF</a>
+              <a type="button" href="{{ url('/admin/users/exportPDF') }}" class="btn btn-default"><i class="fa fa-file-pdf"></i> PDF</a>
+              <a type="button" href="{{ url('/admin/users/exportExcel') }}" class="btn btn-default"><i class="fas fa-file-excel"></i> EXCEL</a>
             </div>
             <div class="pull-right">
               <button data-toggle="modal" data-target=".modalAgregar" class="btn btn-primary"><i class="fa fa-plus"></i> Agregar</button>

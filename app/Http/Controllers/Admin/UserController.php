@@ -8,7 +8,9 @@ use App\User as User;
 use App\Profile as Profile;
 use App\Http\Requests\Profiles\Store;
 use App\Http\Requests\Profiles\Destroy;
-
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UserExport;
 
 class UserController extends Controller
 {
@@ -117,6 +119,29 @@ class UserController extends Controller
 
       return $txt;
    }
+
+   public function viewPDF(){
+        $users = User::all();
+        $pdf = PDF::loadView('admin.md_users.export.pdf',[
+          'users' => $users,
+        ]);
+        $pdf->setPaper("A4", "potrait");
+        return $pdf->stream('Usuarios.pdf');
+    }
+
+    public function exportPDF(){
+        $users = User::all();
+        $pdf = PDF::loadView('admin.md_users.export.pdf',[
+          'users' => $users,
+        ]);
+        $pdf->setPaper("A4", "potrait");
+        return $pdf->download('Usuarios.pdf');
+    }
+
+    public function exportExcel(){
+       return Excel::download(new UserExport, 'Usuarios.xlsx');
+    }
+
 }
 
 

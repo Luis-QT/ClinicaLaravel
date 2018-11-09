@@ -28,6 +28,22 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware'=>'auth'], function(){
   Route::namespace('Admin')->group(function () {
+
+      //Exports
+      Route::get('/admin/users/exportPDF', 'UserController@exportPDF');
+      Route::get('/admin/users/viewPDF', 'UserController@viewPDF');
+      Route::get('/admin/users/exportExcel', 'UserController@exportExcel');
+
+      Route::get('/admin/doctors/exportPDF', 'DoctorController@exportPDF');
+      Route::get('/admin/doctors/viewPDF', 'DoctorController@viewPDF');
+      Route::get('/admin/doctors/exportExcel', 'DoctorController@exportExcel');
+
+      Route::get('/admin/meetings/exportPDF', 'MeetingController@exportPDF');
+      Route::get('/admin/meetings/viewPDF', 'MeetingController@viewPDF');
+      Route::get('/admin/meetings/exportExcel', 'MeetingController@exportExcel');
+
+
+      //Routes
       Route::resource('/admin/specialties', 'SpecialtyController');
       Route::resource('/admin/offices', 'OfficeController');
       Route::resource('/admin/profiles', 'ProfileController');
@@ -53,6 +69,12 @@ Route::group(['middleware'=>'auth'], function(){
       Route::post('/admin/reportsbyOffice','ReportByOfficeController@filter');
 
       Route::get('/admin/reportsbyCalendar','ReportByCalendarController@index');
+
+      //exports
+
+      
+
+
   });
 });
 

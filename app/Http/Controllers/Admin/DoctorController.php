@@ -9,6 +9,9 @@ use App\Specialty;
 use App\Profile as Profile;
 use App\Http\Requests\Profiles\Store;
 use App\Http\Requests\Profiles\Destroy;
+use Barryvdh\DomPDF\Facade as PDF;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\DoctorExport;
 
 
 class DoctorController extends Controller
@@ -123,6 +126,30 @@ class DoctorController extends Controller
 
       return $txt;
    }
+
+   public function viewPDF(){
+        $doctors = Doctor::all();
+        $pdf = PDF::loadView('admin.md_doctors.export.pdf',[
+          'doctors' => $doctors,
+        ]);
+        $pdf->setPaper("A4", "potrait");
+        return $pdf->stream('Medicos.pdf');
+    }
+
+    public function exportPDF(){
+        $doctors = Doctor::all();
+        $pdf = PDF::loadView('admin.md_doctors.export.pdf',[
+          'doctors' => $doctors,
+        ]);
+        $pdf->setPaper("A4", "potrait");
+        return $pdf->download('Medicos.pdf');
+    }
+
+    public function exportExcel(){
+       return Excel::download(new DoctorExport, 'Médicos.xlsx');
+    }
+
+
 }
 
 
