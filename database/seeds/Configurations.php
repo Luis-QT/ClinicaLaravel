@@ -17,7 +17,7 @@ class Configurations extends Seeder
 	   	   'registryNumber'=>'1100002737',
 	   	   'email'=>'clinicaSanPaulo@gmail.com', 
 	   	   'phone'=>'7188811',
-	   	   'logo'=>'logo',
+	   	   'logo'=>null,
 	   	   'address'=>'Independencia. Urb.Corneta Mz123. Lt.11',
         ]);
     }

@@ -7,8 +7,12 @@
 			</button>
 		</div>
 	</div>
-	<div class="box-body">
-		
+	<div class="box-body" style="position: relative;">
+		<img  class="img-responsive img-rounded text-center"  src="{{ asset('') }}/{{$configuration->logo}}" alt="User Image" style="top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;">
 	</div>
 </div>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Profile as Profile;
+use Intervention\Image\Facades\Image;
 
 class ConfigurationController extends Controller
 {
@@ -102,11 +103,23 @@ class ConfigurationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $office = Office::find($id);
-        $office->name = $request->name;
-        $office->keyword_state = $request->state;
-        $office->save();
-        return redirect('admin/offices');
+        $configuration = Configuration::all()->first();
+        $configuration->name = $request->name;
+        $configuration->registryNumber = $request->registryNumber;
+        $configuration->email = $request->email;
+        $configuration->phone = $request->phone;
+        $configuration->address = $request->address;
+
+        $image= $request->file('image');
+
+        $name = $image->getClientOriginalName();
+
+        Image::make($image)->resize(400,400)->save('images/configuration/'.$name);
+
+        $configuration->logo = 'images/configuration/'.$name;
+
+        $configuration->save();
+        return redirect('admin/configurations');
     }
 
     /**
