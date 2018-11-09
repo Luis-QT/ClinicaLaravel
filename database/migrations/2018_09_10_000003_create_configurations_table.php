@@ -19,7 +19,7 @@ class CreateConfigurationsTable extends Migration
             $table->string('registryNumber');
             $table->string('email');
             $table->string('phone');
-            $table->text('logo')->nullable();
+            $table->string('logo')->nullable();
             $table->string('address');
             $table->timestamps();
         });
