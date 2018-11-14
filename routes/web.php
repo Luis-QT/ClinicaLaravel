@@ -1,5 +1,5 @@
 <?php
-
+use App\Patient;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,7 +72,10 @@ Route::group(['middleware'=>'auth'], function(){
 
       //exports
 
-      
+      Route::get('/admin/json',function(){
+            $as = Patient::all();
+            return json_encode($as);
+      });
 
 
   });
