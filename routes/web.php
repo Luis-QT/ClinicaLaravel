@@ -25,6 +25,11 @@ Route::get('/logoutKit', 'LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/admin/json',function(){
+            $as = Patient::all();
+            return json_encode($as);
+      });
+
 
 Route::group(['middleware'=>'auth'], function(){
   Route::namespace('Admin')->group(function () {
@@ -72,11 +77,7 @@ Route::group(['middleware'=>'auth'], function(){
 
       //exports
 
-      Route::get('/admin/json',function(){
-            $as = Patient::all();
-            return json_encode($as);
-      });
-
+      
 
   });
 });
