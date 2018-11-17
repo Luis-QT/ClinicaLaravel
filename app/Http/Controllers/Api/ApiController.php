@@ -15,7 +15,7 @@ class ApiController extends Controller
     public function login(Request $request)
     {
     	try {
-    		$patient = Patient::where('email','=',$request->email);
+    		$patient = Patient::where('email','=',$request->email)->get()->first();
     		if(!$patient){
     			return response()->json([
     				'success'=>false,
