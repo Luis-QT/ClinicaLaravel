@@ -21,8 +21,10 @@
 		<td>
 			@if($meeting->keyword_state == 1)
 				<span class="label label-warning">Asignado</span>
-			@else
+			@elseif($meeting->keyword_state == 2)
 				<span class="label label-success">Atendido</span>
+			@else
+				<span class="label label-success">{{$meeting->keyword->name}}</span>
 			@endif
 		</td>
 		<td>
