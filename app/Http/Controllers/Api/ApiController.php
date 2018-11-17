@@ -8,6 +8,7 @@ use App\Doctor;
 use App\Meeting;
 use App\Patient;
 use App\Configuration;
+use Illuminate\Support\Facades\Hash;
 
 class ApiController extends Controller
 {
