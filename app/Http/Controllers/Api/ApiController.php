@@ -22,7 +22,7 @@ class ApiController extends Controller
     				'msg'=>'No existe un paciente con este email'
     			],200);
     		}
-    		if(Hash::check($patient->password,$request->password)){
+    		if(Hash::check($request->password,$patient->password)){
     			return response()->json([
     				'success'=>true,
     				'msg'=>'Paciente logeado correctamente'
