@@ -75,10 +75,6 @@ Route::group(['middleware'=>'auth'], function(){
 
       Route::get('/admin/reportsbyCalendar','ReportByCalendarController@index');
 
-      //exports
-
-      
-
   });
 });
 
