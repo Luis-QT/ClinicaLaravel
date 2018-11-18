@@ -65,7 +65,7 @@
                 </div>
                 <div class="info-box bg-yellow">
                   <div class="info-box-icon">
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-hospital-o"></i>
                   </div>
                   <div class="info-box-content">
                     <span class="info-box-text">Consultorios</span>

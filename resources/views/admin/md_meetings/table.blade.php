@@ -19,13 +19,19 @@
 		<td>{{ $meeting->doctor->name.' '.$meeting->doctor->lastName }}</td>
 		<td>{{ $meeting->office->name}}</td>
 		<td>
-			@if($meeting->keyword_state == 1)
-				<span class="label label-warning">Asignado</span>
-			@elseif($meeting->keyword_state == 2)
-				<span class="label label-success">Atendido</span>
-			@else
-				<span class="label label-success">{{$meeting->keyword->name}}</span>
-			@endif
+			@switch($meeting->keyword_state)
+				@case(3)
+					<span class="label label-warning">Asignado</span>
+					@break
+				@case(4)
+					<span class="label label-success">Atendido</span>
+					@break
+				@case(5)
+					<span class="label label-danger">Cancelado</span>
+					@break
+				@default
+					<span class="label label-default">Invalido</span>
+			@endswitch
 		</td>
 		<td>
 			<button type="button" data-id="{{$meeting->id}}"

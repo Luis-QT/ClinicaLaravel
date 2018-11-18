@@ -49,10 +49,10 @@ class HomeController extends Controller
                     return preg_match('@'.$yearMonth.'@', $val->date);
                 });
                 $meetingsAssigned = $meetingsOfCurrentMonth->filter(function($val){
-                    return $val->keyword_state == 1;
+                    return $val->keyword_state == 3;
                 });
                 $meetingsAttended = $meetingsOfCurrentMonth->filter(function($val){
-                    return $val->keyword_state == 2;
+                    return $val->keyword_state == 4;
                 });
 
                 $values->addRow([$meses[$i],$meetingsAssigned->count(),$meetingsAttended->count()]);

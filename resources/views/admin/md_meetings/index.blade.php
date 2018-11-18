@@ -21,13 +21,7 @@
                       <option value = "">Seleccione estado</option> 
                       @foreach($keywords as $keyword)
                           <option value = "{{$keyword->id}}"> 
-                          @if($keyword->id == 1)
-                            Asignado
-                          @elseif($keyword->id ==2)
-                            Atendido
-                          @else
                             {{$keyword->name}}
-                          @endif
                           </option>
                       @endforeach
             </select>

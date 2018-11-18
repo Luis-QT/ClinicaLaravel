@@ -74,14 +74,9 @@
                     <label>Estado de la cita</label>
                     <select class="form-control select2" name="keyword_state" style="width: 100%;" required>
                       @foreach($keywords as $keyword)
-                          <option @if($meeting->keyword_state == $keyword->id) selected @endif value = "{{$keyword->id}}"> 
-                          @if($keyword->id == 1)
-                            Asignado
-                          @elseif($keyword->id ==2)
-                            Atendido
-                          @else
+                          <option @if($meeting->keyword_state == $keyword->id) selected @endif value = "{{$keyword->id}}">
                             {{$keyword->name}}
-                          @endif</option>
+                          </option>
                       @endforeach
                     </select>
                   </div>

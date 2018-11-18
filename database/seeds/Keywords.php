@@ -20,5 +20,17 @@ class Keywords extends Seeder
            'id' => 2,
            'name' => 'Deshabilitado',
         ]);
+        Keyword::create([
+           'id' => 3,
+           'name' => 'Asignado',
+        ]);
+        Keyword::create([
+           'id' => 4,
+           'name' => 'Atendido',
+        ]);
+        Keyword::create([
+           'id' => 5,
+           'name' => 'Cancelado',
+        ]);
     }
 }
