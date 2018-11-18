@@ -19,9 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::namespace('Api')->group(function(){
 	Route::post('/login','ApiController@login');
-	Route::get('/doctors','ApiController@getDoctors');
-	Route::get('/allmeetings/{id}','ApiController@getAllMeetings');
-	Route::get('/pendingmeetings/{id}','ApiController@getPendingMeetings');
+	Route::post('/meetings/{id}/cancel','ApiController@cancelMeeting');
+
+	Route::get('/doctors','ApiController@getAllDoctors');
+	Route::get('/patients/{patient_id}/doctors','ApiController@getDoctorsOfPatient');
+	Route::get('/patients/{patient_id}/meetings','ApiController@getAllMeetings');
+	Route::get('/patients/{patient_id}/pending-meetings','ApiController@getPendingMeetings');
+	
 	Route::get('/clinic','ApiController@getClinicInformation');
 });
 

@@ -21,7 +21,7 @@ class MeetingController extends Controller
       $meetings = Meeting::All();
       $patients = Patient::All();
       $doctors  = Doctor::All();
-      $keywords = Keyword::All();
+      $keywords = Keyword::where('id','>=','3')->where('id','<=','5')->get();
       $offices  = Office::All();
       
       $table = view('admin.md_meetings.table', [
@@ -58,7 +58,7 @@ class MeetingController extends Controller
       $meeting  = Meeting::find($id);
       $doctors  = Doctor::All();
       $offices  = Office::All();
-      $keywords = keyword::All();
+      $keywords = Keyword::where('id','>=','3')->where('id','<=','5')->get();
 
       return view('admin.md_meetings.modalEdit', [
          'meeting' => $meeting,
