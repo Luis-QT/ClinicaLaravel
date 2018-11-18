@@ -75,7 +75,7 @@
                     </div>
                   </div>
                 </div>
-                <input type="hidden" name="keyword_state" value="1">
+                <input type="hidden" name="keyword_state" value="3">
                 <div class="row">
                   <div class="form-group text-center">
                      <button type="submit" class="btn btn-primary" style="padding:8px 50px;margin-top:25px;">
