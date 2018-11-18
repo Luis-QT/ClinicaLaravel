@@ -19,7 +19,7 @@ class Patients extends Seeder
            'phone'    =>'973577990',
            'address'  =>'Akihabara 666',
            'email'    =>'mrbraum@mrbraum.com', 
-           'password' =>bcrypt('steinsgate'),
+           'password' =>bcrypt('default'),
            'gender'   =>0
         ]);
 
@@ -31,7 +31,7 @@ class Patients extends Seeder
            'phone'    => '972537490',
            'address'  => 'Av. las camelias 666',
            'email'    => 'juanita@juanita.com', 
-           'password' => bcrypt('juanita'),
+           'password' => bcrypt('default'),
            'gender'   => 1
         ]);
 
@@ -42,7 +42,7 @@ class Patients extends Seeder
            'phone'    => '991533450',
            'address'  => 'Calle. Roma 123',
            'email'    => 'julio@julio.com', 
-           'password' => bcrypt('julio'),
+           'password' => bcrypt('default'),
            'gender'   => 0
         ]);        
 
@@ -53,7 +53,7 @@ class Patients extends Seeder
            'phone'    => '666666666',
            'address'  => 'Av. El bosque 123',
            'email'    => 'slendy@slendy.com', 
-           'password' => bcrypt('slender'),
+           'password' => bcrypt('default'),
            'gender'   => 0
         ]);
 
@@ -65,7 +65,7 @@ class Patients extends Seeder
            'phone'    => '123123123',
            'address'  => 'Av. Masyaf 123',
            'email'    => 'altairy@altair.com', 
-           'password' => bcrypt('assassin'),
+           'password' => bcrypt('default'),
            'gender'   => 1
         ]);
 
@@ -77,7 +77,7 @@ class Patients extends Seeder
            'phone'    => '121232123',
            'address'  => 'Av. Venezuela 123',
            'email'    => 'ester@ester.com', 
-           'password' => bcrypt('ester'),
+           'password' => bcrypt('default'),
            'gender'   => 0
         ]);
     }

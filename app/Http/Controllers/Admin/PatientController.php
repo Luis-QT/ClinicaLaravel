@@ -32,7 +32,7 @@ class PatientController extends Controller
        'name'     => $request->name,
        'lastName' => $request->lastName,
        'email'    => $request->email,
-       'password' => 'default',
+       'password' => bcrypt('default'),
        'birthdate'=> $request->birthDate,
        'phone'    => $request->phone,
        'address'  => $request->address,

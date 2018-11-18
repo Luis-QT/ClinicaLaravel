@@ -10,8 +10,9 @@
     <th></th>
     <th></th>
 </thead>
-@foreach($patients as $patient)
 <tbody>
+@foreach($patients as $patient)
+<tr>
 	<td>{{ $patient->name.' '.$patient->lastName }}</td>
 	<td>
 		@php
@@ -43,9 +44,9 @@
 	  			<i class="fa fa-trash"></i>
 	  		</button>
 	</td>
-	 
-</tbody>
+	</tr> 
 @endforeach
+</tbody>
 </table>
 
 <div class="modal fade modalEdit" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">

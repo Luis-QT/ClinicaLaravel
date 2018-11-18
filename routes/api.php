@@ -17,3 +17,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::namespace('Api')->group(function(){
+	Route::post('/login','ApiController@login');
+	Route::get('/doctors','ApiController@getDoctors');
+	Route::get('/allmeetings/{id}','ApiController@getAllMeetings');
+	Route::get('/pendingmeetings/{id}','ApiController@getPendingMeetings');
+	Route::get('/clinic','ApiController@getClinicInformation');
+});
+
+
+
