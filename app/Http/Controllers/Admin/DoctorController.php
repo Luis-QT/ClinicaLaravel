@@ -58,8 +58,8 @@ class DoctorController extends Controller
 
       $image= $request->file('image');
       $name = $request->name." ".$request->lastName;
-      Image::make($image)->resize(400,400)->save('images/configuration/'.$name);
-      $urlImage = 'images/configuration/'.$name;
+      Image::make($image)->resize(400,400)->save('images/doctors/'.$name);
+      $urlImage = 'images/doctors/'.$name;
 
       Doctor::create([
         'name' => $request->name,
@@ -70,7 +70,7 @@ class DoctorController extends Controller
         'specialty_id' => $request->specialty,
         'photo' => $urlImage,
       ]);
-      
+
       return redirect('admin/doctors');
    }
 
