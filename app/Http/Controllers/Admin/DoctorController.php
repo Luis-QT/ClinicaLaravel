@@ -53,19 +53,14 @@ class DoctorController extends Controller
       //
    }
 
-   //Aun no usado
-   public function verificarCrear(Request $request){
-      $perfiles = Profile::all();
-      $txt="1";
-      //Verifica si no existe otro perfil con el mismo nombre
-      if($perfiles->contains('name',$request->name)==true){
-        $txt="No se pudo crear el perfil\n- Ya existe un perfil con el nombre ingresado";
-      }
-      return $txt;
-   }
-
    public function store(Store $request)
-   {
+   {  
+
+      $image= $request->file('image');
+      $name = $request->name." ".$request->lastName;
+      Image::make($image)->resize(400,400)->save('images/configuration/'.$name);
+      $urlImage = 'images/configuration/'.$name;
+
       Doctor::create([
         'name' => $request->name,
         'lastName' => $request->lastName,
@@ -73,8 +68,9 @@ class DoctorController extends Controller
         'phone' => $request->phone,
         'address' => $request->address,
         'specialty_id' => $request->specialty,
-        'photo' => $request->photo,
+        'photo' => $urlImage,
       ]);
+      
       return redirect('admin/doctors');
    }
 

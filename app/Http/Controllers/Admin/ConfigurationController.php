@@ -111,11 +111,8 @@ class ConfigurationController extends Controller
         $configuration->address = $request->address;
 
         $image= $request->file('image');
-
         $name = $image->getClientOriginalName();
-
         Image::make($image)->resize(400,400)->save('images/configuration/'.$name);
-
         $configuration->logo = 'images/configuration/'.$name;
 
         $configuration->save();

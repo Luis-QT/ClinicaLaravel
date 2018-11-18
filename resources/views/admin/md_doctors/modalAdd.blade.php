@@ -13,12 +13,6 @@
                 <form method="POST" action="{{ route('doctors.store') }}">
                 {{ csrf_field() }}
                   <div class="row">
-                    <div class="col-md-12 text-center">
-                      <img src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png" width="200px">
-                    </div>
-                  </div>
-              
-                  <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Nombre</label>
@@ -58,17 +52,18 @@
                       </div>
                     </div>
                     <div class="col-md-6">
+                      <label>Foto</label>
+                      <input type="file" name="image" style="color: transparent;">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
                       <div class="form-group">
                         <label>Direccion</label>
                         <textarea class="form-control" name="address"></textarea> 
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label>Foto</label>
-                        <textarea class="form-control" name="photo"></textarea>
-                    </div>
+                    
                   </div>
                   <div class="row">
                     <div class="form-group text-center">
