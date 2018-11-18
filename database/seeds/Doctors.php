@@ -19,7 +19,7 @@ class Doctors extends Seeder
            'phone'=>'978547988',
            'address'=>'Los Olivos , Av Canadá',
            'specialty_id' => 2,
-           'photo' => 'https://www.tenvinilo.com/img/sticker/large/4723.jpg',
+           'photo' => 'images/doctors/default.jpg',
         ]);
 
         Doctor::create([
@@ -29,7 +29,7 @@ class Doctors extends Seeder
            'phone'=>'977455454',
            'address'=>'Comas , Av. Coyote  Calle 45',
            'specialty_id' => 1,
-           'photo' => 'https://www.tenvinilo.com/img/sticker/large/4723.jpg',
+           'photo' => 'images/doctors/default.jpg',
         ]);
 
         Doctor::create([
@@ -39,7 +39,7 @@ class Doctors extends Seeder
            'phone'=>'977457555',
            'address'=>'San Martin de Porres , Urb. Naranjal',
            'specialty_id' => 3,
-           'photo' => 'https://www.tenvinilo.com/img/sticker/large/4723.jpg',
+           'photo' => 'images/doctors/default.jpg',
         ]);
 
         Doctor::create([
@@ -49,7 +49,7 @@ class Doctors extends Seeder
            'phone'=>'999888444',
            'address'=>'San Martin de Porres , Urb. Los Huertos',
            'specialty_id' => 1,
-           'photo' => 'https://www.tenvinilo.com/img/sticker/large/4723.jpg',
+           'photo' => 'images/doctors/default.jpg',
         ]);
     }
 }

@@ -12,6 +12,7 @@ use App\Http\Requests\Profiles\Destroy;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\DoctorExport;
+use Intervention\Image\Facades\Image;
 
 
 class DoctorController extends Controller
@@ -53,13 +54,18 @@ class DoctorController extends Controller
       //
    }
 
+   
+
    public function store(Store $request)
    {  
-
-      $image= $request->file('image');
-      $name = $request->name." ".$request->lastName;
-      Image::make($image)->resize(400,400)->save('images/doctors/'.$name);
-      $urlImage = 'images/doctors/'.$name;
+      $urlImage = 'images/doctors/default.jpg';
+      
+      if($request->file('photo')!=null){
+        $image= $request->file('photo');
+        $name = $request->name." ".$request->lastName.".jpg";
+        Image::make($image)->resize(400,400)->save('images/doctors/'.$name);
+        $urlImage = 'images/doctors/'.$name;
+      }
 
       Doctor::create([
         'name' => $request->name,
@@ -85,6 +91,14 @@ class DoctorController extends Controller
       //
    }
 
+   public function info($id)
+   {
+      $doctor = Doctor::find($id);
+      return view('admin.md_doctors.modalInfo', [
+         'doctor' => $doctor,
+      ]);
+   }
+
    public function edit($id)
    {
       $doctor = Doctor::find($id);
@@ -97,6 +111,7 @@ class DoctorController extends Controller
 
    public function update(Request $request, $id)
    {  
+
       $doctor = Doctor::find($id);
       $doctor->name = $request->name;
       $doctor->lastName = $request->lastName;
@@ -104,8 +119,15 @@ class DoctorController extends Controller
       $doctor->phone = $request->phone;
       $doctor->address = $request->address;
       $doctor->specialty_id = $request->specialty;
-      $doctor->photo = $request->photo;
 
+      if($request->file('photo')!=null){
+        $image= $request->file('photo');
+        $name = $request->name." ".$request->lastName.".jpg";
+        Image::make($image)->resize(400,400)->save('images/doctors/'.$name);
+        $urlImage = 'images/doctors/'.$name;
+        $doctor->photo = $urlImage;
+      }
+      
       $doctor->save();
 
       return redirect('admin/doctors');

@@ -53,6 +53,8 @@ Route::group(['middleware'=>'auth'], function(){
       Route::resource('/admin/offices', 'OfficeController');
       Route::resource('/admin/profiles', 'ProfileController');
       Route::resource('/admin/users', 'UserController');
+
+      Route::get('/admin/doctors/{id}/info', 'DoctorController@info');
       Route::resource('/admin/doctors', 'DoctorController');
 
       Route::resource('/admin/patients','PatientController');

@@ -10,7 +10,7 @@
                </div>
               </div>
               <div class="panel-body" style="padding: 15px;">
-                <form method="POST" action="{{ route('doctors.store') }}">
+                <form method="POST" action="{{ route('doctors.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                   <div class="row">
                     <div class="col-md-6">
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-md-6">
                       <label>Foto</label>
-                      <input type="file" name="image" style="color: transparent;">
+                      <input type="file" name="photo" style="color: transparent;">
                     </div>
                   </div>
                   <div class="row">

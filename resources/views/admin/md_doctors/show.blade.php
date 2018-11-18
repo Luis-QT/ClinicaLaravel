@@ -28,6 +28,7 @@
 					<th>Telefono</th>
           <th>Especialidad</th>
           <th>Dirección</th>
+          <th>Visualizar</th>
 					<th>Editar</th>
 					<th>Eliminar</th>
 				</thead>
@@ -41,13 +42,18 @@
             <td>{{ $doctor->phone }}</td>
   					<td>{{ $doctor->specialty->name }}</td>
   					<td>{{ $doctor->address }}</td>
-  					<td><button type="button" data-id="{{$doctor->id}}"
+            <td class="text-center"><button type="button" data-id="{{$doctor->id}}"
+                data-toggle="modal" data-target="#modalInfo"
+                class="btn btn-warning btn-sm visualizar">
+                <i class="fa fa-eye"></i>
+              </button></td>
+  					<td class="text-center"><button type="button" data-id="{{$doctor->id}}"
                 data-toggle="modal" data-target="#modalEdit"
-  							class="btn btn-success editar" @if(!$editar) disabled @endif>
+  							class="btn btn-success btn-sm editar" @if(!$editar) disabled @endif>
   							<i class="fa fa-pencil"></i>
   						</button></td>
-  					<td><button type="button" data-id="{{$doctor->id}}"
-  							data-name="{{$doctor->name}}" class="btn btn-danger eliminar"
+  					<td class="text-center"><button type="button" data-id="{{$doctor->id}}"
+  							data-name="{{$doctor->name}}" class="btn btn-sm btn-danger eliminar"
   							data-toggle="modal" data-target="#delted"
   							@if(!$eliminar) disabled @endif>
   							<i class="fa fa-trash"></i>
@@ -65,6 +71,8 @@
 
 <div class="modal fade modalEdit" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
 </div>
+<div class="modal fade modalInfo" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+</div>
 
 
 <script type="text/javascript">
@@ -77,11 +85,19 @@
     });
     @endif
 
+    $(document).on('click',".visualizar",function(event) {
+      $id = $(this).data('id');
+      $(".modalInfo").html('<div class="box box-warning box-solid"><div class="box-header with-border"><h3 class="box-title">Visualizar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
+      $(".modalInfo").load('{{ url("/admin/doctors/") }}/' + $id + '/info');
+    });
+
+    @if($eliminar)
     $(document).on('click',".eliminar",function(event) {
       $name = $(this).data('name')
       $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el médico ' + $name +'?</p>');
       $('#confirmaDelete').data('id',$(this).data('id'))
     });
+    @endif
 
     $("#confirmaDelete").on('click',function(event){
       $id = $('#confirmaDelete').data('id');
