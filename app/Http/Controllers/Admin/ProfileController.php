@@ -73,9 +73,9 @@ class ProfileController extends Controller
 
    public function store(Store $request)
    {
-      Profile::create([
+      Profile::create([ 
          'name' => $request->name,
-         'permissions' =>'Perfiles,0,0,0,0;Usuarios,0,0,0,0;'
+         'permissions' =>'Perfiles,0,0,0,0;Usuarios,0,0,0,0;Especialidades,0,0,0,0;Consultorios,0,0,0,0;Pacientes,0,0,0,0;Médicos,0,0,0,0;Citas,0,0,0,0;Reportes,0,0,0,0;Configuraciones,0,0,0,0'
       ]);
       return redirect('admin/profiles');
    }

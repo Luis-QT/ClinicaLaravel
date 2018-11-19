@@ -27,7 +27,8 @@
 					<th>Email</th>
 					<th>Perfil</th>
 					<th>Estado</th>
-					<th>Editar</th>
+          <th>Visualizar</th>
+          <th>Editar</th>
 					<th>Eliminar</th>
 				</thead>
         <tbody>
@@ -39,6 +40,11 @@
   					<td>{{ $user->email }}</td>
   					<td>{{ $user->profile->name }}</td>
   					<td>{{ $user->state->name }}</td>
+            <td class="text-center"><button type="button" data-id="{{$user->id}}"
+                data-toggle="modal" data-target="#modalInfo"
+                class="btn btn-warning btn-sm visualizar">
+                <i class="fa fa-eye"></i>
+              </button></td>
   					<td><button type="button" data-id="{{$user->id}}"
                 data-toggle="modal" data-target="#modalEdit"
   							class="btn btn-success editar" @if(!$editar) disabled @endif>
@@ -64,6 +70,9 @@
 <div class="modal fade modalEdit" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
 </div>
 
+<div class="modal fade modalInfo" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+</div>
+
 
 <script type="text/javascript">
   $(document).ready(function() {
@@ -75,11 +84,19 @@
     });
     @endif
 
+    $(document).on('click',".visualizar",function(event) {
+      $id = $(this).data('id');
+      $(".modalInfo").html('<div class="box box-warning box-solid"><div class="box-header with-border"><h3 class="box-title">Visualizar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
+      $(".modalInfo").load('{{ url("/admin/users/") }}/' + $id + '/info');
+    });
+
+    @if($eliminar)
     $(document).on('click',".eliminar",function(event) {
       $name = $(this).data('name')
       $('.modal-body').html('<p>¿Esta seguro que quiere eliminar el usuario ' + $name +'?</p>');
       $('#confirmaDelete').data('id',$(this).data('id'))
     });
+    @endif
 
     $("#confirmaDelete").on('click',function(event){
       $id = $('#confirmaDelete').data('id');

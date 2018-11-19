@@ -11,6 +11,7 @@ use App\Http\Requests\Profiles\Destroy;
 use Barryvdh\DomPDF\Facade as PDF;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UserExport;
+use Intervention\Image\Facades\Image;
 
 class UserController extends Controller
 {
@@ -62,12 +63,22 @@ class UserController extends Controller
    }
 
    public function store(Store $request)
-   {
+   { 
+      $urlImage = 'images/users/default.jpg';
+      
+      if($request->file('photo')!=null){
+        $image= $request->file('photo');
+        $name = $request->name." ".$request->lastName.".jpg";
+        Image::make($image)->resize(400,400)->save('images/users/'.$name);
+        $urlImage = 'images/users/'.$name;
+      }
+
       User::create([
         'name' => $request->name,
         'lastName' => $request->lastName,
         'email' => $request->email, 
         'password' => $request->password,
+        'photo' => $urlImage,
         'keyword_state' => $request->state, 
         'profile_id' => $request->profile,
       ]);
@@ -83,6 +94,14 @@ class UserController extends Controller
    public function show($id)
    {
       //
+   }
+
+   public function info($id)
+   {
+      $user = User::find($id);
+      return view('admin.md_users.modalInfo', [
+         'user' => $user,
+      ]);
    }
 
    public function edit($id)
@@ -104,6 +123,14 @@ class UserController extends Controller
       $user->password = $request->password;
       $user->keyword_state = $request->state;
       $user->profile_id = $request->profile;
+
+      if($request->file('photo')!=null){
+        $image= $request->file('photo');
+        $name = $request->name." ".$request->lastName.".jpg";
+        Image::make($image)->resize(400,400)->save('images/users/'.$name);
+        $urlImage = 'images/users/'.$name;
+        $user->photo = $urlImage;
+      }
 
       $user->save();
 

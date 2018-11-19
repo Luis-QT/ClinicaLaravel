@@ -23,14 +23,14 @@
           <!-- Menu Toggle Button -->
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <!-- The user image in the navbar-->
-            <img src="{{ asset('dist/img/user3.jpg') }}" class="user-image" alt="User Image">
+            <img src="{{ asset('') }}/{{ Auth::User()->photo }}" class="user-image" alt="User Image">
             <!-- hidden-xs hides the username on small devices so only the image appears. -->
             <span class="hidden-xs">{{ Auth::User()->name }}</span>
           </a>
           <ul class="dropdown-menu">
             <!-- The user image in the menu -->
             <li class="user-header">
-              <img src="{{ asset('dist/img/user3.jpg') }}" class="img-circle" alt="User Image">
+              <img src="{{ asset('') }}/{{ Auth::User()->photo }}" class="img-circle" alt="User Image">
 
               <p>
                 {{ Auth::User()->name }}

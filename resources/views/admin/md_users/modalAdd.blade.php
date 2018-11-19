@@ -10,7 +10,7 @@
                </div>
               </div>
               <div class="panel-body" style="padding: 15px;">
-                <form method="POST" action="{{ route('users.store') }}">
+                <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                   <div class="row">
                     <div class="col-md-6">
@@ -55,13 +55,17 @@
                       </div>
                     </div>
                     <div class="col-md-6">
+                      <label>Foto</label>
+                      <input type="file" name="photo" style="color: transparent;">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label>Contraseña</label>
                         <input type="password" name="password" class="form-control">
                       </div>
                     </div>
-                  </div>
-                  <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label>Confirmar contraseña</label>

@@ -9,8 +9,14 @@
            </div>
           </div>
           <div class="panel-body" style="padding: 15px;">
-            <form role="form" method="POST" action="{{ url('/admin/users') }}/{{$user['id']}}">
+            <form role="form" method="POST" action="{{ url('/admin/users') }}/{{$user['id']}}" enctype="multipart/form-data">
               <input type="hidden" name="_method" value="put" /> {{ csrf_field() }}
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <img src="{{ asset('') }}/{{$user->photo}}" width="200px">
+                </div>
+              </div>
+              <hr>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -54,13 +60,17 @@
                   </div>
                 </div>
                 <div class="col-md-6">
+                  <label>Foto</label>
+                  <input type="file" name="photo" style="color: transparent;">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
                   <div class="form-group">
                     <label>Contraseña</label>
                     <input type="password" name="password" class="form-control">
                   </div>
                 </div>
-              </div>
-              <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>Confirmar contraseña</label>

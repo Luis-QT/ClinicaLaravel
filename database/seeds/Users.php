@@ -19,6 +19,7 @@ class Users extends Seeder
          	'password' => bcrypt('admin'),
             'keyword_state'=>1,
             'profile_id'=>1,
+            'photo' => 'images/users/default.jpg',
          ]);
 
          User::create([
@@ -28,6 +29,7 @@ class Users extends Seeder
             'password' => bcrypt('admin'),
             'keyword_state'=>1,
             'profile_id'=>1,
+            'photo' => 'images/users/default.jpg',
          ]);
     }
 }
