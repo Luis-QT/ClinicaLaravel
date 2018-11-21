@@ -12,7 +12,8 @@ class Schedule extends Model
         'doctor_id',
         'day_of_week',
         'arrival_time',
-        'quitting_time'
+        'quitting_time',
+        'office_id'
     ];
 
     public static function getSchedulesOfDay(int $day_of_week, array $schedules){
@@ -23,5 +24,9 @@ class Schedule extends Model
     	}); 
     	$response = $response->toArray();
     	return $response;
+    }
+
+    public function office(){
+        return $this->belongsTo('App\Office','office_id');
     }
 }

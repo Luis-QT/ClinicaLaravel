@@ -18,10 +18,14 @@ class Office extends Model
        }
 
 	   public function meetings(){
-	   	  return $this->hasMany('App\Meeting','office_id');
+	   	  return $this->hasMany('App\Meeting','meeting_id');
 	   }
 
 	   public function doctors(){
 	   	  return $this->hasMany('App\Doctor','office_id');
 	   }
+
+	   public function schedules(){
+          return $this->belongsTo('App\Schedule','schedule_id');
+       }
 }
