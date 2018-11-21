@@ -14,8 +14,8 @@
               
               <div id="contenedor">
                 @if($doctor->schedules->isEmpty())
-                  <hr>
                   <div class="row div-horario">
+                    <hr>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>Dia</label>
@@ -43,12 +43,12 @@
                         <input class="form-control datepicker-justHour endHour" type="text"></input>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-danger btn-sm" data-count="0"><span class="fa fa-remove"></span></button>
+                    <button type="button" class="btn btn-danger btn-sm btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
                   </div>
                 @else
                   @foreach($doctor->schedules as $schedule)
-                  <hr>
                   <div class="row div-horario">
+                  <hr>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>Dia</label>
@@ -76,7 +76,7 @@
                         <input class="form-control datepicker-justHour endHour" value="{{ $schedule->quitting_time }} type="text"></input>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-danger btn-sm" data-count="0"><span class="fa fa-remove"></span></button>
+                    <button type="button" class="btn btn-danger btn-sm btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
                   </div>
                   @endforeach
                 @endif
@@ -107,8 +107,8 @@
 
     $('#btnAgregarHorario').click(function(){
       $('#contenedor').append(
-              '<hr>'+
                 '<div class="row div-horario">'+
+                '<hr>'+
                   '<div class="col-md-4">'+
                     '<div class="form-group">'+
                       '<label>Dia</label>'+
@@ -136,7 +136,7 @@
                       '<input class="form-control datepicker-justHour endHour" type="text"></input>'+
                     '</div>'+
                   '</div>'+
-                  '<button type="button" class="btn btn-danger btn-sm" data-count="0"><span class="fa fa-remove"></span></button>'
+                  '<button type="button" class="btn btn-danger btn-sm btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>'
         );
       $('.datepicker-justHour').datetimepicker({
        format: 'HH:mm' 
@@ -148,6 +148,10 @@
 
       $('.select2').select2();
 
+    });
+
+    $(document).on('click','.btnEliminarHorario',function(){
+        $(this).parent().remove();
     });
 
     $('#btnGuardar').click(function(){
