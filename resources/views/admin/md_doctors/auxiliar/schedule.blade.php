@@ -38,6 +38,7 @@
       <input class="form-control datepicker-justHour endHour" type="text"></input>
     </div>
   </div>
+</hr>
 
  <script> 
   $(document).ready(function(){

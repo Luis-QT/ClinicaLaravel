@@ -131,30 +131,36 @@ class DoctorController extends Controller
 
    public function updateSchedule(Request $request)
    {  
-      //dd($request->id);
-      //dd($request->horarios);
-
       $doctor_id = $request->doctor_id;
       $horarios = $request->horarios;
       if(!is_array($horarios)){
-        return;
+        return "No pasaste un array";
       }
       foreach ($horarios as $horario) {
-        if($horario['day']>=1 && $horario['day']<=7 && strtotime($horario['startHour']) < strtotime($horario['endHour'])){
+        if($horario['isToDelete'] == 1){
+          if($horario['id']){
+            $schedule = Schedule::find($horario['id']);
+            $schedule->delete();
+          }
+        }else if($horario['day']>=1 && $horario['day']<=7 && strtotime($horario['startHour']) < strtotime($horario['endHour'])){
           if($horario['id']){
             $schedule = Schedule::find($horario['id']);
             $schedule->day_of_week    = $horario['day'];
             $schedule->arrival_time   = $horario['startHour'];
             $schedule->quitting_time  = $horario['endHour'];
+            $schedule->office_id      = $horario['office'];
             $schedule->save();
           }else{
             Schedule::create([
              'doctor_id'     => $doctor_id,
+             'office_id'     => $horario['office'],
              'day_of_week'   => $horario['day'],
              'arrival_time'  => $horario['startHour'],
              'quitting_time' => $horario['endHour']
-            ]);  
+            ]); 
+            
           }
+        }else{
         }
       }
 
