@@ -3,7 +3,7 @@
   <div class="col-md-3">
     <div class="form-group">
       <label>Consultorio</label>
-      <select class="form-control select2 day" style="width: 100%;">
+      <select class="form-control select2 office" style="width: 100%;">
         <option value="">--Selec--</option>
         @foreach($offices as $office)
         <option value="{{$office->id}}">{{$office->name}}</option>

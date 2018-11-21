@@ -29,7 +29,7 @@
                     <div class="col-md-3">
                       <div class="form-group">
                         <label>Consultorio</label>
-                        <select class="form-control select2 day" style="width: 100%;">
+                        <select class="form-control select2 office" style="width: 100%;">
                           <option value="">--Selec--</option>
                           @foreach($offices as $office)
                           <option value="{{$office->id}}">{{$office->name}}</option>
@@ -73,7 +73,7 @@
                     <div class="col-md-3">
                       <div class="form-group">
                         <label>Consultorio</label>
-                        <select class="form-control select2 day" style="width: 100%;">
+                        <select class="form-control select2 office" style="width: 100%;">
                           <option value="">--Selec--</option>
                           @foreach($offices as $office)
                           <option value="{{$office->id}}" @if($schedule->office_id == $office->id) selected @endif>{{$office->name}}</option>
@@ -145,14 +145,16 @@
     $('#btnGuardar').click(function(){
       var doctor_id = $('#doctor_id').val();
       var horarios = new Array();
-       $('.div-horario').each(function(){
+      $('.div-horario').each(function(){
           var horario = new Object();
           horario.id = $(this).data('id');
+          horario.office = $(this).find('.office option:selected').val();
           horario.day = $(this).find('.day option:selected').val();
           horario.startHour = $(this).find('.startHour').val();
           horario.endHour = $(this).find('.endHour').val();
           horarios.push(horario);
-      })
+      });
+
       $.ajax({
          url: 'doctors/updateSchedule',
          type:'post',
@@ -165,7 +167,7 @@
       }).fail( function() {
           alert("Fallo en proceso");
       });
-
+      
     });
 
   });
