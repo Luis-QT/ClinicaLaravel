@@ -88,12 +88,13 @@
 @include('admin.md_doctors.modalDelete')
 modalSchedule
 
-<div class="modal fade modalSchedule" id="modalSchedule" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
 
-<div class="modal fade modalEdit" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade modalInfo" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
 </div>
-<div class="modal fade modalInfo" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal fade modalSchedule" id="modalSchedule" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;"></div>
+<div class="modal fade modalEdit" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
 </div>
+
 
 
 <script type="text/javascript">

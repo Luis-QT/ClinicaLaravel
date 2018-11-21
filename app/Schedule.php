@@ -11,7 +11,7 @@ class Schedule extends Model
     protected $fillable = [
         'doctor_id',
         'day_of_week',
-        'arrival_time',
+        'arrival_time',   
         'quitting_time',
         'office_id'
     ];

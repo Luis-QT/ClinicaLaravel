@@ -180,8 +180,7 @@
          }
       }).done( function() {
 
-        alert("Proceso exitoso");
-        //location.reload();
+        location.reload();
 
       }).fail( function() {
           alert("Fallo en proceso");

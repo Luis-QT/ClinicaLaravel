@@ -149,7 +149,6 @@ class DoctorController extends Controller
         }
       }
 
-      return redirect('admin/doctors');  
    }
 
    public function update(Request $request, $id)
