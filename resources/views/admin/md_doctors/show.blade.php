@@ -86,7 +86,6 @@
 
 @include('admin.md_doctors.modalAdd')
 @include('admin.md_doctors.modalDelete')
-modalSchedule
 
 
 <div class="modal fade modalInfo" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true" style="display: none;">
