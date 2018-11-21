@@ -22,6 +22,15 @@ class Offices extends Seeder
            'keyword_state' => 1,
         ]);
         Office::create([
+           'name' => 'Consultorio B-1',
+           'keyword_state' => 1,
+        ]);
+
+        Office::create([
+           'name' => 'Consultorio B-2',
+           'keyword_state' => 1,
+        ]);
+        Office::create([
            'name' => 'Laboratorio',
            'keyword_state' => 1,
         ]);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Doctor;
 use App\Specialty;
+use App\Schedule;
 use App\Profile as Profile;
 use App\Http\Requests\Profiles\Store;
 use App\Http\Requests\Profiles\Destroy;
@@ -31,7 +32,7 @@ class DoctorController extends Controller
        $eliminar=$permisos[3];
 
        $specialties=Specialty::all();
-
+        
        if ($ver) {
          $show = view('admin.md_doctors.show', [
             'specialties' => $specialties,
@@ -67,7 +68,7 @@ class DoctorController extends Controller
         $urlImage = 'images/doctors/'.$name;
       }
 
-      Doctor::create([
+      $doctor = Doctor::create([
         'name' => $request->name,
         'lastName' => $request->lastName,
         'email' => $request->email, 
@@ -77,7 +78,44 @@ class DoctorController extends Controller
         'photo' => $urlImage,
       ]);
 
-      return redirect('admin/doctors');
+      //CODIGO PARA AÑADIR HORARIOS AL MEDICO SEGUN EL PATRON
+      //Patron para ingresar horarios a los medicos, tiene la forma: 
+      //Ejm: 1 09:00-20:00 ;2 13:00-22:00 15:22-19:00 ;
+      //Donde 1 y 2 son lunes y martes respectivamente
+      $patternSchedule = "@(1\s((([01][0-9])|(2[0-3])):[0-5][0-9]-(([01][0-9])|(2[0-3])):[0-5][0-9]\s)+;)?(2\s((([01][0-9])|(2[0-3])):[0-5][0-9]-(([01][0-9])|(2[0-3])):[0-5][0-9]\s)+;)?(3\s((([01][0-9])|(2[0-3])):[0-5][0-9]-(([01][0-9])|(2[0-3])):[0-5][0-9]\s)+;)?(4\s((([01][0-9])|(2[0-3])):[0-5][0-9]-(([01][0-9])|(2[0-3])):[0-5][0-9]\s)+;)?(5\s((([01][0-9])|(2[0-3])):[0-5][0-9]-(([01][0-9])|(2[0-3])):[0-5][0-9]\s)+;)?(6\s((([01][0-9])|(2[0-3])):[0-5][0-9]-(([01][0-9])|(2[0-3])):[0-5][0-9]\s)+;)?(7\s((([01][0-9])|(2[0-3])):[0-5][0-9]-(([01][0-9])|(2[0-3])):[0-5][0-9]\s)+;)?@";
+
+      $inputSchedule = $request->schedules;
+      if(!$inputSchedule || !preg_match($patternSchedule, $inputSchedule)){
+      //verifico que no este vacio y que cumpla el patron
+       return redirect('admin/doctors');
+      }
+
+      $daysSchedule = explode(';',$inputSchedule); //Convertir la cadena en array
+      //$resul = "";
+      foreach ($daysSchedule as $daySchedule) {
+        $day = substr($daySchedule, 0, 1); //Obtengo el primer caracter
+        $day = intval($day); //Convertir a entero
+        $daySchedule = substr($daySchedule, 2, -1); //eliminar la cadena q marca el dia y el espacio final antes del punto y coma
+        $schedules = explode(" ", $daySchedule);
+        //$resul = $resul.implode("+",$schedules)."\l";
+        foreach ($schedules as $schedule) {
+          if($schedule){
+            $hours = explode("-", $schedule);
+            $arrival_time   = $hours[0];
+            $quitting_time  = $hours[1];
+            if(strtotime($arrival_time) < strtotime($quitting_time)){ //Verifico que el rango de horas sea valido
+              //$resul = $resul.implode("+",$hours)."\l";
+              Schedule::create([
+                'doctor_id'     => $doctor->id,
+                'day_of_week'   => $day,
+                'arrival_time'  => $arrival_time,
+                'quitting_time' => $quitting_time
+              ]);
+            }
+          }
+        }
+      }
+       return redirect('admin/doctors');
    }
 
    /**
