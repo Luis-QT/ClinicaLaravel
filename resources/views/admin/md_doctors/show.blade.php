@@ -57,8 +57,8 @@
             </td>
             <td class="text-center"><button type="button" data-id="{{$doctor->id}}"
                 data-toggle="modal" data-target="#modalSchedule"
-                class="btn btn-warning btn-sm horarios">
-                <i class="fa fa-eye"></i>
+                class="btn btn-primary btn-sm horarios">
+                <i class="fa fa-calendar-check-o"></i>
               </button></td>
             <td class="text-center"><button type="button" data-id="{{$doctor->id}}"
                 data-toggle="modal" data-target="#modalInfo"

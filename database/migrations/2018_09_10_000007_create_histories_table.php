@@ -13,7 +13,7 @@ class CreateHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('histories', function (Blueprint $table) {
+        Schema::create('history', function (Blueprint $table) {
             $table->increments('id');
             $table->string('date');
             $table->integer('patient_id')->unsigned();

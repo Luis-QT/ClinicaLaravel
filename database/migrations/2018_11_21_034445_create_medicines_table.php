@@ -13,11 +13,11 @@ class CreateMedicinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('medicines', function (Blueprint $table) {
+        Schema::create('medicine', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('disease_id')->unsigned();
-            $table->foreign('disease_id')->references('id')->on('diseases');
+            $table->foreign('disease_id')->references('id')->on('disease');
             $table->timestamps();
         });
     }

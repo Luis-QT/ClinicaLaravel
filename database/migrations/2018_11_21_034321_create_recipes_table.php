@@ -13,7 +13,7 @@ class CreateRecipesTable extends Migration
      */
     public function up()
     {
-        Schema::create('recipes', function (Blueprint $table) {
+        Schema::create('recipe', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });

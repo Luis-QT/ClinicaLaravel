@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Doctor;
+use App\Office;
 use App\Specialty;
 use App\Schedule;
 use App\Profile as Profile;
@@ -102,11 +103,11 @@ class DoctorController extends Controller
 
    public function modalSchedule($id)
    {
-      $specialties=Specialty::all();
+      $offices=Office::all();
       $doctor = Doctor::find($id);
       return view('admin.md_doctors.modalSchedule', [
          'doctor' => $doctor,
-         'specialties' => $specialties
+         'offices' => $offices
       ]);
    }
 
@@ -117,6 +118,14 @@ class DoctorController extends Controller
       return view('admin.md_doctors.modalEdit', [
          'doctor' => $doctor,
          'specialties' => $specialties
+      ]);
+   }
+
+   public function addSchedule()
+   {
+      $offices=Office::all();
+      return view('admin.md_doctors.auxiliar.schedule', [
+         'offices' => $offices
       ]);
    }
 

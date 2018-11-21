@@ -1,5 +1,5 @@
 <input type="hidden" id="doctor_id" value="{{$doctor->id}}">
-<div class="modal-dialog ">
+<div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -25,7 +25,19 @@
                 @if($doctor->schedules->isEmpty())
                   <div class="row div-horario">
                     <hr>
-                    <div class="col-md-4">
+                    <button type="button" class="btn btn-danger btn-xs btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Consultorio</label>
+                        <select class="form-control select2 day" style="width: 100%;">
+                          <option value="">--Selec--</option>
+                          @foreach($offices as $office)
+                          <option value="{{$office->id}}">{{$office->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
                       <div class="form-group">
                         <label>Dia</label>
                         <select class="form-control select2 day" style="width: 100%;">
@@ -40,26 +52,36 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                       <div class="form-group">
                         <label>Hora Inicio</label>
                         <input class="form-control datepicker-justHour startHour" type="text"></input>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                       <div class="form-group">
                         <label>Hora Fin</label>
                         <input class="form-control datepicker-justHour endHour" type="text"></input>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-danger btn-xs btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
                   </div>
                 @else
                   @foreach($doctor->schedules as $schedule)
                   <div class="row div-horario" data-id="{{$schedule->id}}">
                   <hr>
                     <button type="button" class="btn btn-danger btn-xs btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label>Consultorio</label>
+                        <select class="form-control select2 day" style="width: 100%;">
+                          <option value="">--Selec--</option>
+                          @foreach($offices as $office)
+                          <option value="{{$office->id}}" @if($schedule->office_id == $office->id) selected @endif>{{$office->name}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
                       <div class="form-group">
                         <label>Dia</label>
                         <select class="form-control select2 day" style="width: 100%;">
@@ -74,13 +96,13 @@
                         </select>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                       <div class="form-group">
                         <label>Hora Inicio</label>
                         <input class="form-control datepicker-justHour startHour" value="{{ $schedule->arrival_time }}" type="text"></input>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                       <div class="form-group">
                         <label>Hora Fin</label>
                         <input class="form-control datepicker-justHour endHour" value="{{ $schedule->quitting_time }} type="text"></input>
@@ -111,46 +133,9 @@
     $('#btnAgregarHorario').click(function(){
       $('#contenedor').append(
                 '<div class="row div-horario" data-id="">'+
-                '<hr>'+
-                '<button type="button" class="btn btn-danger btn-xs btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>'+
-                  '<div class="col-md-4">'+
-                    '<div class="form-group">'+
-                      '<label>Dia</label>'+
-                      '<select class="form-control select2 day" style="width: 100%;">'+
-                        '<option value="">--Selec--</option>'+
-                        '<option value="1">Lunes</option>'+
-                        '<option value="2">Martes</option>'+
-                        '<option value="3">Miercoles</option>'+
-                        '<option value="4">Jueves</option>'+
-                        '<option value="5">Viernes</option>'+
-                        '<option value="6">Sabado</option>'+
-                        '<option value="7">Domingo</option>'+
-                      '</select>'+
-                    '</div>'+
-                  '</div>'+
-                  '<div class="col-md-4">'+
-                    '<div class="form-group">'+
-                      '<label>Hora Inicio</label>'+
-                      '<input class="form-control datepicker-justHour startHour" type="text"></input>'+
-                    '</div>'+
-                  '</div>'+
-                  '<div class="col-md-4">'+
-                    '<div class="form-group">'+
-                      '<label>Hora Fin</label>'+
-                      '<input class="form-control datepicker-justHour endHour" type="text"></input>'+
-                    '</div>'+
-                  '</div>'
+                '</div>'
         );
-      $('.datepicker-justHour').datetimepicker({
-       format: 'HH:mm' 
-      });
-
-      $('.btn-cancel-schedule').click(function(){
-        $('#schedule-'+$(this).data('id')).remove();
-      });
-
-      $('.select2').select2();
-
+      $('.div-horario:last').load('{{ url("/admin/doctors/addSchedule") }}');
     });
 
     $(document).on('click','.btnEliminarHorario',function(){
@@ -158,11 +143,8 @@
     });
 
     $('#btnGuardar').click(function(){
-
       var doctor_id = $('#doctor_id').val();
-
       var horarios = new Array();
-
        $('.div-horario').each(function(){
           var horario = new Object();
           horario.id = $(this).data('id');
@@ -171,9 +153,6 @@
           horario.endHour = $(this).find('.endHour').val();
           horarios.push(horario);
       })
-
-      console.log($('#token').val());
-
       $.ajax({
          url: 'doctors/updateSchedule',
          type:'post',
@@ -182,9 +161,7 @@
                horarios : horarios
          }
       }).done( function() {
-
         location.reload();
-
       }).fail( function() {
           alert("Fallo en proceso");
       });

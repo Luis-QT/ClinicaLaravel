@@ -13,7 +13,7 @@ class CreateDiseasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('diseases', function (Blueprint $table) {
+        Schema::create('disease', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('description');
@@ -28,6 +28,6 @@ class CreateDiseasesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('diseases');
+        Schema::dropIfExists('disease');
     }
 }

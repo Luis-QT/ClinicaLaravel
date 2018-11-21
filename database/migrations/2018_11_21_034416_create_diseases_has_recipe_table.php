@@ -14,12 +14,12 @@ class CreateDiseasesHasRecipeTable extends Migration
     public function up()
     {
         Schema::create('diseases_has_recipe', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('disease_id')->unsigned();
             $table->integer('recipe_id')->unsigned();
             $table->integer('meeting_id')->unsigned();
-            $table->foreign('disease_id')->references('id')->on('diseases');
-            $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->primary(['disease_id', 'recipe_id','meeting_id']);
+            $table->foreign('disease_id')->references('id')->on('disease');
+            $table->foreign('recipe_id')->references('id')->on('recipe');
             $table->foreign('meeting_id')->references('id')->on('meetings');
             $table->timestamps();
         });
