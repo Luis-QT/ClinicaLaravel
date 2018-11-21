@@ -137,6 +137,16 @@ class DoctorController extends Controller
       ]);
    }
 
+   public function modalSchedule($id)
+   {
+      $specialties=Specialty::all();
+      $doctor = Doctor::find($id);
+      return view('admin.md_doctors.modalSchedule', [
+         'doctor' => $doctor,
+         'specialties' => $specialties
+      ]);
+   }
+
    public function edit($id)
    {
       $doctor = Doctor::find($id);
@@ -145,6 +155,12 @@ class DoctorController extends Controller
          'doctor' => $doctor,
          'specialties' => $specialties
       ]);
+   }
+
+   public function updateSchedule(Request $request)
+   {  
+      //dd($request->id);
+      dd($request->horarios);
    }
 
    public function update(Request $request, $id)

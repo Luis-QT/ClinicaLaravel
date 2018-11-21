@@ -27,6 +27,7 @@
 					<th>Email</th>
 					<th>Especialidad</th>
           <th>Dias que atiende</th>
+          <th>Horarios</th>
           <th>Visualizar</th>
 					<th>Editar</th>
           <th>Eliminar</th>
@@ -55,6 +56,11 @@
               @endphp
             </td>
             <td class="text-center"><button type="button" data-id="{{$doctor->id}}"
+                data-toggle="modal" data-target="#modalSchedule"
+                class="btn btn-warning btn-sm horarios">
+                <i class="fa fa-eye"></i>
+              </button></td>
+            <td class="text-center"><button type="button" data-id="{{$doctor->id}}"
                 data-toggle="modal" data-target="#modalInfo"
                 class="btn btn-warning btn-sm visualizar">
                 <i class="fa fa-eye"></i>
@@ -80,6 +86,9 @@
 
 @include('admin.md_doctors.modalAdd')
 @include('admin.md_doctors.modalDelete')
+modalSchedule
+
+<div class="modal fade modalSchedule" id="modalSchedule" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
 
 <div class="modal fade modalEdit" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
 </div>
@@ -101,6 +110,12 @@
       $id = $(this).data('id');
       $(".modalInfo").html('<div class="box box-warning box-solid"><div class="box-header with-border"><h3 class="box-title">Visualizar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
       $(".modalInfo").load('{{ url("/admin/doctors/") }}/' + $id + '/info');
+    });
+
+    $(document).on('click',".horarios",function(event) {
+      $id = $(this).data('id');
+      $(".modalSchedule").html('<div class="box box-warning box-solid"><div class="box-header with-border"><h3 class="box-title">Visualizar</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button></div></div><div class="box-body"></div><div class="overlay"><i class="fa fa-refresh fa-spin"></i></div></div>')
+      $(".modalSchedule").load('{{ url("/admin/doctors/") }}/' + $id + '/modalSchedule');
     });
 
     @if($eliminar)

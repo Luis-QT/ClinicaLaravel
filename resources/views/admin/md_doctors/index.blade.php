@@ -12,7 +12,7 @@
 </section>
 
 <section class="content">
-
+    <input type="hidden" id="token" value="{{csrf_token()}}">
     <div class="row">
 
         <div class="col-md-12">{!! $show !!}</div>

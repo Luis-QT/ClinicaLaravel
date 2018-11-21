@@ -42,6 +42,8 @@ Route::group(['middleware'=>'auth'], function(){
       Route::get('/admin/doctors/exportPDF', 'DoctorController@exportPDF');
       Route::get('/admin/doctors/viewPDF', 'DoctorController@viewPDF');
       Route::get('/admin/doctors/exportExcel', 'DoctorController@exportExcel');
+      Route::get('/admin/doctors/{id}/modalSchedule', 'DoctorController@modalSchedule');
+      Route::post('/admin/doctors/updateSchedule', 'DoctorController@updateSchedule');
 
       Route::get('/admin/meetings/exportPDF', 'MeetingController@exportPDF');
       Route::get('/admin/meetings/viewPDF', 'MeetingController@viewPDF');
