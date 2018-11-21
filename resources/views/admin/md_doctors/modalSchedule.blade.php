@@ -1,3 +1,4 @@
+<input type="hidden" id="doctor_id" value="{{$doctor->id}}">
 <div class="modal-dialog ">
     <div class="modal-content">
         <div class="panel panel-default">
@@ -9,9 +10,17 @@
            </div>
           </div>
           <div class="panel-body" style="padding: 15px;">
-              <input type="hidden" id="doctor_id" value="{{$doctor->id}}">
-              <button type="button" id="btnAgregarHorario" class="btn btn-success btn-sm" data-count="0"><span class="fa fa-plus">Agregar Horario</span></button>
-              
+              <div class="row">
+                <div class="col-md-12">
+                   <button type="button" id="btnAgregarHorario" class="btn btn-primary pull-left" style="padding:8px 50px;">
+                       Agregar Horario
+                   </button>
+                   <button type="button" id="btnGuardar" class="btn btn-success pull-right" style="padding:8px 50px;">
+                       Guardar
+                   </button>
+                </div>
+              </div>
+
               <div id="contenedor">
                 @if($doctor->schedules->isEmpty())
                   <div class="row div-horario">
@@ -43,12 +52,13 @@
                         <input class="form-control datepicker-justHour endHour" type="text"></input>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-danger btn-sm btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
+                    <button type="button" class="btn btn-danger btn-xs btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
                   </div>
                 @else
                   @foreach($doctor->schedules as $schedule)
                   <div class="row div-horario" data-id="{{$schedule->id}}">
                   <hr>
+                    <button type="button" class="btn btn-danger btn-xs btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>Dia</label>
@@ -76,18 +86,11 @@
                         <input class="form-control datepicker-justHour endHour" value="{{ $schedule->quitting_time }} type="text"></input>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-danger btn-sm btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>
                   </div>
                   @endforeach
                 @endif
               </div>
-              <div class="row">
-                <div class="form-group text-center">
-                   <button type="button" id="btnGuardar" class="btn btn-primary" style="padding:8px 50px;margin-top:25px;">
-                       Guardar
-                   </button>
-                </div>
-              </div>
+              
           </div>
         </div>
     </div>
@@ -109,6 +112,7 @@
       $('#contenedor').append(
                 '<div class="row div-horario" data-id="">'+
                 '<hr>'+
+                '<button type="button" class="btn btn-danger btn-xs btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>'+
                   '<div class="col-md-4">'+
                     '<div class="form-group">'+
                       '<label>Dia</label>'+
@@ -135,8 +139,7 @@
                       '<label>Hora Fin</label>'+
                       '<input class="form-control datepicker-justHour endHour" type="text"></input>'+
                     '</div>'+
-                  '</div>'+
-                  '<button type="button" class="btn btn-danger btn-sm btnEliminarHorario" data-count="0"><span class="fa fa-remove"></span></button>'
+                  '</div>'
         );
       $('.datepicker-justHour').datetimepicker({
        format: 'HH:mm' 

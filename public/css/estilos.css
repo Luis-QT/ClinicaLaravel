@@ -499,3 +499,10 @@
 .example-modal .modal {
   background: transparent !important;
 }
+
+**/
+.btnEliminarHorario{
+    position: absolute;
+    right: 15px;
+    margin-top: -13px;
+}
