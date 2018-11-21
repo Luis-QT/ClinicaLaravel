@@ -93,7 +93,7 @@
   $(document).ready(function(){$('.select2').select2();}) 
 
   $('.datepicker-justHour').datetimepicker({
-       format: 'hh:mm' 
+       format: 'HH:mm' 
     });
 
   $('.datepicker-justDate').datetimepicker({

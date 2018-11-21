@@ -25,12 +25,11 @@
 					<th>Nombre</th>
 					<th>Apellido</th>
 					<th>Email</th>
-					<th>Telefono</th>
-          <th>Especialidad</th>
-          <th>Dirección</th>
+					<th>Especialidad</th>
+          <th>Dias que atiende</th>
           <th>Visualizar</th>
 					<th>Editar</th>
-					<th>Eliminar</th>
+          <th>Eliminar</th>
 				</thead>
         <tbody>
 				@foreach($doctors as $i => $doctor)
@@ -39,9 +38,22 @@
   					<td>{{ $doctor->name }}</td>
   					<td>{{ $doctor->lastName }}</td>
             <td>{{ $doctor->email }}</td>
-            <td>{{ $doctor->phone }}</td>
-  					<td>{{ $doctor->specialty->name }}</td>
-  					<td>{{ $doctor->address }}</td>
+            <td>{{ $doctor->specialty->name }}</td>
+            <td>
+              @php
+                $days = [' ','Lu','Ma','Mi','Ju','Vi','Sa','Do'];
+                for($i = 1; $i<=7; $i++){
+                  $schedules = App\Schedule::getSchedulesOfDay($i,$doctor->schedules->toArray());
+                  if($schedules){
+                    echo '<span class="badge" data-toggle="tooltip" data-placement="top" data-html="true" title="';
+                    foreach($schedules as $schedule){
+                      echo 'De: '.$schedule['arrival_time'].' a: '.$schedule['quitting_time']."\n";
+                    }
+                    echo '">'.$days[$i].'</span>';
+                  }
+                }
+              @endphp
+            </td>
             <td class="text-center"><button type="button" data-id="{{$doctor->id}}"
                 data-toggle="modal" data-target="#modalInfo"
                 class="btn btn-warning btn-sm visualizar">

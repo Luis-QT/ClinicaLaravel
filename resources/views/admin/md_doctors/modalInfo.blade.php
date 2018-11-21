@@ -39,6 +39,26 @@
                 <td>Dirección</td>
                 <td>{{ $doctor->address }}</td>
               </tr>
+              <tr>
+                <td>Dias que atiende</td>
+                <td>
+                  <table class="table table-striped tabla-lista-derecha">
+                    @php
+                      $days = [' ','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado','Domingo'];
+                      for($i = 1; $i<=7; $i++){
+                        $schedules = App\Schedule::getSchedulesOfDay($i,$doctor->schedules->toArray());
+                        if($schedules){
+                          echo '<tr><td>'.$days[$i].'</td><td>';
+                          foreach($schedules as $schedule){
+                            echo $schedule['arrival_time'].'-'.$schedule['quitting_time']."\n";
+                          }
+                          echo '</td></tr>';
+                        }
+                      }
+                    @endphp
+                  </table>
+                </td>
+              </tr>
             </table>
           </div>
           <div class="sub-box">

@@ -15,10 +15,16 @@ class Doctor extends Model
         'phone',
         'address',
         'specialty_id',
+        'office_id',
         'photo'
     ];
 
     public function specialty(){
     	return $this->belongsTo('App\Specialty','specialty_id');
     }
+
+    public function schedules(){
+        return $this->hasMany('App\Schedule','doctor_id');
+    }
 }
+    
