@@ -22,9 +22,7 @@ class CreateDoctorsTable extends Migration
             $table->string('address');
             $table->string('photo')->nullable();
             $table->integer('specialty_id')->unsigned();
-            $table->integer('office_id')->unsigned()->nullable();
             $table->foreign('specialty_id')->references('id')->on('specialties');
-            $table->foreign('office_id')->references('id')->on('offices');
             $table->timestamps();
         });
     }
