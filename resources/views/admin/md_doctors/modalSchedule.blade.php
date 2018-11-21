@@ -47,7 +47,7 @@
                   </div>
                 @else
                   @foreach($doctor->schedules as $schedule)
-                  <div class="row div-horario">
+                  <div class="row div-horario" data-id="{{$schedule->id}}">
                   <hr>
                     <div class="col-md-4">
                       <div class="form-group">
@@ -107,7 +107,7 @@
 
     $('#btnAgregarHorario').click(function(){
       $('#contenedor').append(
-                '<div class="row div-horario">'+
+                '<div class="row div-horario" data-id="">'+
                 '<hr>'+
                   '<div class="col-md-4">'+
                     '<div class="form-group">'+
@@ -156,12 +156,13 @@
 
     $('#btnGuardar').click(function(){
 
-      var id = $('#doctor_id').val();
+      var doctor_id = $('#doctor_id').val();
 
       var horarios = new Array();
 
        $('.div-horario').each(function(){
           var horario = new Object();
+          horario.id = $(this).data('id');
           horario.day = $(this).find('.day option:selected').val();
           horario.startHour = $(this).find('.startHour').val();
           horario.endHour = $(this).find('.endHour').val();
@@ -174,7 +175,7 @@
          url: 'doctors/updateSchedule',
          type:'post',
          data:{_token : $('#token').val(),
-               id : id,
+               doctor_id : doctor_id,
                horarios : horarios
          }
       }).done( function() {

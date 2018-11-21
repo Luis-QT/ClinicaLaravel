@@ -17,10 +17,14 @@
 		<td>{{ $meeting->doctor->name.' '.$meeting->doctor->lastName }}</td>
 		<td>{{ $meeting->office->name}}</td>
 		<td>
-			@if($meeting->keyword_state == 1)
-				<span class="label label-warning">Asignado</span>
+			@if($meeting->keyword_state == 3)
+				<span class="label label-warning">{{$meeting->state->name}}</span>
+			@elseif($meeting->keyword_state == 4)
+				<span class="label label-success">{{$meeting->state->name}}</span>
+			@elseif($meeting->keyword_state == 5)
+				<span class="label label-danger">{{$meeting->state->name}}</span>
 			@else
-				<span class="label label-success">Atendido</span>
+				<span class="label label-default">{{$meeting->state->name}}</span>
 			@endif
 		</td>
 	</tr>
