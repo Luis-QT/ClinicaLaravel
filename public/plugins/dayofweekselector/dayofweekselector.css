@@ -1,0 +1,16 @@
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox] + label {
+  color: #ccc;
+  cursor: pointer;
+}
+
+input[type=checkbox]:checked + label {
+  color: #333;
+}
+
+.days div {
+    display: inline;
+}

@@ -15,7 +15,6 @@ class Doctor extends Model
         'phone',
         'address',
         'specialty_id',
-        'office_id',
         'photo'
     ];
 
