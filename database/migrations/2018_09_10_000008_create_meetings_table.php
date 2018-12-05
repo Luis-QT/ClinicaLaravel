@@ -27,7 +27,7 @@ class CreateMeetingsTable extends Migration
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->foreign('doctor_id')->references('id')->on('doctors');
             $table->foreign('office_id')->references('id')->on('offices');
-            $table->foreign('history_id')->references('id')->on('history');
+            $table->foreign('history_id')->references('id')->on('histories');
 
             $table->timestamps();
         });

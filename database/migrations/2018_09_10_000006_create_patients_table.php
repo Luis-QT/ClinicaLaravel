@@ -23,6 +23,8 @@ class CreatePatientsTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->integer('gender');
+
+
             $table->timestamps();
         });
     }

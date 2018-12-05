@@ -28,7 +28,7 @@ class PatientController extends Controller
    public function store(Request $request)
    {
       
-     Patient::create([
+     $patient = Patient::create([
        'name'     => $request->name,
        'lastName' => $request->lastName,
        'email'    => $request->email,
@@ -37,6 +37,21 @@ class PatientController extends Controller
        'phone'    => $request->phone,
        'address'  => $request->address,
        'gender'   => $request->gender
+     ]);
+
+     History::create([
+       'enfermedadesTratadas' => '',
+       'hospitalizaciones'=> '',
+       'inmunisaciones'=> '',
+       'tipoSangre'=> '', 
+       'alergias'=> '',
+       'estadoPadre'=> 0,
+       'enfermedadesPadre'=> '',
+       'hospitalizacionPadre'=> '',
+       'estadoMadre'=> 0,
+       'enfermedadesMadre'=> '',
+       'hospitalizacionMadre'=> '',
+       'patient_id' => $patient->id,
      ]);
 
      return redirect('/admin/patients');  

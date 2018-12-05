@@ -24,4 +24,8 @@ class Patient extends Model
     	return $this->hasMany('App\Meeting','patient_id');
     }
 
+    public function history(){
+        return $this->hasOne('App\History','patient_id');
+    }
+
 }

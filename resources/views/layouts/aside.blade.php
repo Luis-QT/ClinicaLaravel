@@ -63,7 +63,6 @@
           <li><a href="{{ url('/admin/reportsbyCalendar') }}"><i class="fa fa-line-chart"></i><span>Citas en calendario</span></a></li>
         </ul>
       </li>  
-      <li><a href="#"><i class="fa fa-stethoscope"></i> <span>Another Link</span></a></li>
     <!-- /.sidebar-menu -->
   </section>
   <!-- /.sidebar -->

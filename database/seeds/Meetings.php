@@ -22,6 +22,7 @@ class Meetings extends Seeder
         	'office_id'		=>	1
         ]);
 
+
         Meeting::create([
         	'date'			=>	'2018/09/11',
         	'hour'			=>	'12:20',

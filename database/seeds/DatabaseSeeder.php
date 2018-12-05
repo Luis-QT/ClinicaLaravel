@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(Meetings::class);
         $this->call(Configurations::class);
         $this->call(Schedules::class);
+        $this->call(Histories::class);
     }
 }
