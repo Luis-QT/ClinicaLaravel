@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\History;
 use App\Patient;
 
 class PatientController extends Controller
@@ -32,7 +33,7 @@ class PatientController extends Controller
        'name'     => $request->name,
        'lastName' => $request->lastName,
        'email'    => $request->email,
-       'password' => bcrypt('default'),
+       'password' => 'default',
        'birthdate'=> $request->birthDate,
        'phone'    => $request->phone,
        'address'  => $request->address,
